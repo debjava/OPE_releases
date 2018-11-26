@@ -1,0 +1,96 @@
+/* CSS Document */
+body{margin:0px; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:10px; color:#434343; 
+		scrollbar-3dlight-color:;
+        scrollbar-arrow-color:#b6804c;
+        scrollbar-base-color:#F2F2F2;
+        scrollbar-track-color:#FFF;
+        scrollbar-darkshadow-color:#FFF;
+        scrollbar-face-color:#F2F2F2;
+        scrollbar-highlight-color:#F2F2F2;
+        scrollbar-shadow-color:#FFF; }
+
+input {border-top: 1px solid #8fadc5; border-left: 1px solid #8fadc5;  border-bottom: 1px solid #8fadc5; border-right: 1px solid #8fadc5; height:16px; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px;}
+
+.class_input { border:0px solid #cccccc;}
+
+.text_area{font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px;}
+
+select {height:17px; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px;}
+
+.button{ color:#FFFFFF; background:url(images/button_bg.gif) repeat-x bottom left; font-weight:bold; font-size:9px; padding:1px 5px 2px 5px; height:20px;  border:1px solid #cccccc;}
+
+.column_title_bg{ background:url(../images/box_bg.gif) repeat-x right; font-weight:bold;}
+.title_bg{ background:url(../images/title_bg_new.gif) repeat-x top left; color:#FFFFFF; font-weight:bold; text-align:left;}
+.title_font{ font-weight:bold; font-size:12px; color:#FFFFFF}
+.table_body_bg_red{ background:url(../images/column_border_bg.gif); padding:6px;  line-height:18px; font-size:11px; text-align:left;}
+.table_body_bg_white{ background:url(../images/column_border_bg_white.gif);}
+
+
+.lmv_bg{ background:url(../images/nav_bg_ash.gif) repeat-x top left; font-weight:bold;  padding:6px;}
+img{border:0px;}
+.lmv_bg1{ cursor:pointer; background:url(../images/nav_hov_bg.gif) repeat-x top left; font-weight:bold; padding:6px;  }
+img{border:0px;}
+
+
+.radio_border{border:none;}
+.button {  background:#C80000  ; color:#FFFFFF; border:0 px  solid 0px;}
+.title_name { font-size:11px;}
+
+
+.highlight{ font-weight:normal; color:#f06604; font-size: 8pt; font-family:Verdana, Arial, Helvetica, sans-serif; text-decoration:none; }
+
+.asterisk{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:RED; margin:0; padding:0;}
+
+/* P tag for the forms */
+p.cont_login { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:#333333; text-align:justify; margin:0; padding:0;}
+p.login_userpass { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:white; margin:0; padding:0;}
+p.copy { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:9px; color:#000000; margin:0; padding:0;}
+p.error { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px;font-weight:bold; color:RED; margin:0; padding:0;height:17px; background-color:#EBEBEB; border-right:1px solid #fff;}
+p.title { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:#000000; margin:0; padding:0; font-weight:bold;}
+p.version { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:#333333; margin:0; padding:0; }
+p.version_black { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:black; margin:0; padding:0; }
+p.version_white { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:white; margin:0; padding:0; }
+
+p.inputstyle{font-size:11px; color:#17266D;}
+
+.ahand { cursor:pointer; }
+
+/* set checkbox - properties  */
+.clsInput-Checkbox { border:0px solid #CCCCCC; color:#000066; height:18px; margin:0px 0px 0px 0px; }
+
+/* set HR-line - properties */
+.clsHr { border: .1em solid #336699; }
+
+/* set page labels - Normal  */
+.clsLabel { font-size: 8pt; font-family:Verdana, Arial, Helvetica, sans-serif; text-decoration:none; color:#000000; }
+.clsMesg { font-weight: bold; font-size: 10pt; font-family:Verdana, Arial, Helvetica, sans-serif; text-decoration:none; color:#000000; }
+/* set page labels - Big,Bold  */
+.clsLabelBold { font-weight: bold; font-size: 8pt; font-family:Verdana, Arial, Helvetica, sans-serif; font-variant: normal; font-style: normal; text-decoration:none; color:#000000; }
+
+.HighLight_LinkTree { font-family:Verdana, Arial, Helvetica, sans-serif;font-weight:bold; font-size:12px; color:#000000; margin:0; padding:0;}
+.links{font-family:Verdana, Arial, Helvetica, sans-serif;margin:0; padding:0;font-size:42px;font-weight:none; color:red; padding-bottom:3px;}
+.high_light{ font-weight:bold;  color:#f06604;}
+
+.channel_bg{ background:url(../images/Picture2.jpg) repeat-x top left; font-weight:bold; }
+
+.more{ font-weight:bold; color:#EB001F; text-align:right; padding-bottom:5px;font-size:11px;}
+.ahover1 { float: left; padding: 7px 15px; text-decoration: none; border-bottom: none; color: #424242; } 
+.ahover2 { color: #424242; background:url(../images/nav_hov_bg1.gif) repeat-x top right; cursor:pointer;}
+.ahover3 { background:url(../images/nav_hov_bg.gif) repeat-x top right; cursor:pointer; color: #993300; font-weight:bold; font-size:11px;}
+.ahand { cursor:pointer; }
+.ahand1 { cursor:none; }
+.ahand2 {cursor:pointer; text-decoration: none; color:#000000;}
+.moreahand { cursor:pointer; text-decoration:underline; color:#810541; }
+.moreahand1 {cursor:pointer; text-decoration:underline; color:#0000FF;font-size:12px;}
+.logout{ color: #424242;  list-style: none;background: repeat-x top right; }
+.logout1{ color: #424242; cursor:pointer; background:url(../images/nav_hov_bg.gif) repeat-x  right; padding:0px 0px 0px 0px; }
+
+.hand {font-weight:bold;cursor:pointer; text-decoration:none;text-align:right; color:#0000FF;font-size:11px;padding-bottom:2px;}
+
+.handlink {font-weight:bold;cursor:pointer; text-decoration:none;text-align:right; color:#EB001F;font-size:11px;padding-bottom:2px;}
+
+.horizontal_rule{ background:url(../images/default.jpg); border:.1em solid;}
+
+p.sublink{font-size:11px; color:#17266D;margin-left:2px;}
+
+sublink_bullet{color:red;}

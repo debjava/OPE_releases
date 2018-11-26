@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+
+  <description>Custom tags for the OPE codebase</description>
+  <jsp-version>2.0</jsp-version>
+  <display-name>OPE Taglib</display-name>
+  <tlib-version>1.1</tlib-version>
+  <short-name>agmt</short-name>
+  <uri>http://java.idealinvent.com/jsp/jstl/ope</uri>
+
+      <tag>
+            <name>dropDown</name>
+            <tag-class>com.dnb.agreement.tag.GetDropDownTag</tag-class>
+            <body-content>empty</body-content>
+            <attribute>
+                <name>var</name>
+                <required>true</required>
+                <rtexprvalue>true</rtexprvalue>
+            </attribute>
+            <attribute>
+                <name>scope</name>
+                <required>true</required>
+                <rtexprvalue>true</rtexprvalue>
+            </attribute>
+            <attribute>
+                <name>key</name>
+                <required>false</required>
+                <rtexprvalue>true</rtexprvalue>
+            </attribute>
+            <attribute>
+                <name>module</name>
+                <required>false</required>
+                <rtexprvalue>true</rtexprvalue>
+            </attribute>
+    </tag>
+       
+    <tag>
+        <name>ServiceBureauId</name>
+        <tag-class>com.dnb.agreement.tag.GetServiceBureauIdTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>var</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>scope</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>key</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+        <tag>
+          <name>AgreementId</name>
+          <tag-class>com.dnb.agreement.tag.GetAgreementIdTag</tag-class>
+          <body-content>empty</body-content>
+          <attribute>
+               <name>var</name>
+               <required>true</required>
+               <rtexprvalue>true</rtexprvalue>
+          </attribute>
+          <attribute>
+               <name>scope</name>
+               <required>true</required>
+               <rtexprvalue>true</rtexprvalue>
+           </attribute>
+
+           <attribute>
+               <name>key</name>
+               <required>false</required>
+               <rtexprvalue>true</rtexprvalue>
+           </attribute>
+    </tag>
+
+    <tag>
+          <name>InternalRefId</name>
+          <tag-class>com.dnb.agreement.tag.GetServiceCodeTag</tag-class>
+          <body-content>empty</body-content>
+          <attribute>
+              <name>var</name>
+              <required>true</required>
+              <rtexprvalue>true</rtexprvalue>
+          </attribute>
+          <attribute>
+               <name>scope</name>
+               <required>true</required>
+               <rtexprvalue>true</rtexprvalue>
+          </attribute>
+
+          <attribute>
+               <name>key</name>
+               <required>false</required>
+               <rtexprvalue>true</rtexprvalue>
+          </attribute>
+    </tag>
+
+</taglib>

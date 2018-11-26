@@ -1,0 +1,93 @@
+--
+/******************************************************************************************************************
+* Copyright 2006 IDEAL INVENT Technologies Pvt. Ltd.                                         	      		*
+* IDEAL INVENT Technologies Pvt. Ltd reserves all rights in the Program as delivered.                 		*
+* The Program or any portion thereof may not be reproduced in any form whatsoever except           		 	*
+* as provided by license without the written consent of IDEAL INVENT Technologies Pvt. Ltd.              	 	*
+*												      		 				*
+* File Name                   : agre_defin.stb                                         	              	*
+* Author                      : charles                                                         		*
+* Creation Date               : 26-July-2007                                                          		*
+* Description                 : This file contains stubs for Channel Associate package					*
+* Modification History        :                                                                       		*
+*												      		 				*
+*  Version No.|  Date        | Modified by |      Brief description of change                         	 	*
+*  ------------------------------------------------------------------------------------------------------------- 	*
+*          	  | 		     |		 | 												*
+*  ------------------------------------------------------------------------------------------------------------- 	*
+******************************************************************************************************************/
+--
+
+-- New
+DECLARE
+	p_err_code 		       VARCHAR2(100 CHAR);
+	p_last_version 			VARCHAR2(01 CHAR);
+	p_err_message 			VARCHAR2(1000);
+	l_agre_data    agre_defn_table     := agre_defn_table();
+        l_map_data     agre_map_defn_table := agre_map_defn_table();
+BEGIN
+	
+
+	l_agre_data.EXTEND;
+	l_agre_data(l_agre_data.LAST) := agre_defn_type
+					(
+						100
+					,	1
+					,	'Branch Na'
+					,	'Cont.per'
+					,	'DNb relatio mang'
+					,	'21-Jul-2008'
+					,	'MIcr'
+					,	'PATUid'
+					,	'csrt'
+					,	'ee'
+					,	'patu'
+					,	5.00
+					,	'21-Jul-2008'
+					,	'30-Jul-2008'
+					,	'Bangaloor'
+					,	null
+					,	null
+					,	null
+					,	'Bangalore'
+					,	null
+					,	null
+					,	null
+					,	'IND'
+					,	'IND'
+					,	'A'
+					,	'user name'
+					,	'21-Jul-2008'
+					,	'user name'
+					,	'21-Jul-2008'
+					);
+
+	l_map_data.EXTEND;
+	l_map_data(l_map_data.LAST) := agre_map_defn_type
+					(
+						1
+					,	'aaaaa'
+					,	'IDEAL'
+					,	'Adress'
+					,	100
+					);
+
+	IF agre_defn.fn_agre
+			(
+				'AA'
+			,	'N'
+			,	'21-Jul-2008'
+			,	l_agre_data
+			,	l_map_data
+			,	p_err_code
+			,	p_err_message
+		
+			) != 1
+	THEN
+		DBMS_OUTPUT.PUT_LINE('Error Code:'||p_err_code||'  Error Message:'||p_err_message);
+	ELSE
+		DBMS_OUTPUT.PUT_LINE('New Channel Associate created successfully');
+	END IF;
+END;
+/
+

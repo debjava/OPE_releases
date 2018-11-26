@@ -1,0 +1,24 @@
+<file-system>
+
+  <users-path>home</users-path>
+
+  <users>
+
+    <user>
+      <username>anonymous</username>
+      <home/>
+    </user>
+
+    <user>
+      <username>ftpuser</username>
+      <home/>
+    </user>
+
+	<user>
+      <username>deba</username>
+      <home/>
+    </user>
+
+  </users>
+
+</file-system>

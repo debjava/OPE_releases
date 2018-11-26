@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+                               "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+<!-- ========== Form Bean Definitions ================= -->
+<form-beans>	
+		<form-bean name= "Login" type= "com.dnb.common.bean.LoginBean" />		
+</form-beans>
+
+<global-forwards>
+  <forward name="login" path="/resources/common/jsp/login.jsp" redirect="false" />
+</global-forwards>
+
+
+<!-- ========== Action Mapping Definitions ============ -->
+<action-mappings>
+<action path= "/resources/common/jsp/Login"
+		  type= "com.dnb.common.action.LoginAction" 
+		  name= "Login" 
+		  input= "/resources/common/jsp/login.jsp" 
+		  scope= "request" 
+		  validate= "true" >
+	<forward name= "success" path= "/resources/common/jsp/main.jsp" redirect="true"/>
+	<forward name= "failed" path= "/resources/common/jsp/login.jsp" />
+</action>
+
+<action path= "/resources/common/jsp/Logout"
+		  type= "com.dnb.common.action.LogoutAction" 
+		  name= "Logout" 
+		  scope= "request" 
+		  validate= "true" >
+
+<forward name= "success" path= "/resources/common/jsp/index.jsp" />
+</action>
+</action-mappings>
+
+</struts-config>

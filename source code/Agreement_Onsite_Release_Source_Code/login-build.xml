@@ -1,0 +1,89 @@
+<project name="login" default="login" basedir=".">
+
+		<property file="login-build.properties" />
+
+		<property name="login.jar.file"	value="${basedir}/lib/login/login.jar"/>
+
+<path id="compile.classpath">
+
+	<fileset dir="${basedir}/lib/struts">
+      <include name="*.jar"/>
+    </fileset>
+    
+    <fileset dir="${basedir}/lib/jstl">
+      <include name="*.jar"/>
+    </fileset>
+    	<fileset dir="${basedir}/lib/OracleDriver">
+      <include name="*.jar"/>
+    </fileset>
+    	<fileset dir="${basedir}/lib/commons">
+      <include name="*.jar"/>
+    </fileset>
+    <fileset dir="${basedir}/lib/log4j">
+      <include name="*.jar"/>
+    </fileset>
+    
+    <fileset dir="${basedir}/lib/servlet">
+      <include name="*.jar"/>
+    </fileset>  
+    
+     <fileset dir="${basedir}/lib/quartz">
+      <include name="*.jar"/>
+    </fileset> 
+    
+     <fileset dir="${basedir}/lib/jboss">
+      <include name="*.jar"/>
+    </fileset> 
+    
+    <fileset dir="${basedir}/lib/dbcp">
+      <include name="*.jar"/>
+    </fileset> 
+
+  </path>
+  
+	<!-- Commented out by Debadatta Mishra
+		 The directory is not all required.
+	-->
+	<!-- <mkdir dir="${build.path}/login-build/" /> --> 
+
+	<mkdir dir="${basedir}/build/commonsrc" /> 
+
+   <target name="login" description="Compile Java sources">
+
+    <!-- Compile Java classes as necessary -->
+  
+    <delete includeEmptyDirs="true">
+     <fileset dir="${basedir}/build/commonsrc/" includes="**/*" />
+    </delete>
+
+	<!-- Delete the previous login.jar file -->
+	<delete file="${login.jar.file}"/>
+   
+    <javac srcdir="${basedir}/src/commonsrc/com/dnb/common"
+          destdir="${basedir}/build/commonsrc/"           
+          deprecation="${compile.deprecation}"
+    	  source="1.5" target="1.5" debug="on" fork="yes" >
+          <classpath refid="compile.classpath"/>
+    </javac>   	 
+
+   <jar destfile="${login.jar.file}">
+  	     <fileset dir="${basedir}/build/commonsrc/" excludes="**/*.java"/>
+   </jar>
+
+<!--
+	Commented out by Debaatta Mishra
+	The following lines are not at all required
+-->
+<!--
+	 <jar destfile="${build.path}/login.jar">
+  	     <fileset dir="${basedir}/build/commonsrc/" excludes="**/*.java"/>
+  	 </jar>    
+  	 
+  	 <copy  todir="${basedir}/lib/login/">
+   		<fileset dir="${build.path}/" includes="*.jar"/>  
+   	</copy>
+-->
+
+  </target>
+  
+</project>

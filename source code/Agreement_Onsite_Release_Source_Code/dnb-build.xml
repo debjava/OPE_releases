@@ -1,0 +1,66 @@
+<!--
+
+  Ant script for generating dnb.war, which contains integration wars of agreement,
+  statement. Before running this ant script, user needs to get working 
+  agreement.war.dir and statement.war.dir in single project or workspace,
+  then copy dnb build script and dnb properties file in to same workspace or project.
+  then run this ant dnb-build.xml. you will get dnb.war which is the integration of 
+  both agreement and statement.
+  After getting dnb.war, you need to add path of statement-struts-config.xml,
+  agreement-struts-config.xml, agreement.tld and  statement.tld in the web.xml file.
+    
+-->
+<project name="dnb 1.0" default="dnb" basedir=".">
+
+<property file="dnb-build.properties" />
+
+   <target name="dnb" description="Compile Java sources">
+
+    
+    <echo message="creating Directory "/>
+    
+    <mkdir dir="${build.path}\dnb.war.dir" /> 
+    <mkdir dir="${build.path}\dnb.war.dir\resources" />
+    <mkdir dir="${build.path}\dnb.war.dir\resources\common" /> 
+    <mkdir dir="${build.path}\dnb.war.dir\resources\agreement" />
+   	<mkdir dir="${build.path}\dnb.war.dir\resources\statement" /> 
+	<mkdir dir="${build.path}\dnb.war.dir\WEB-INF" /> 
+	<mkdir dir="${build.path}\dnb.war.dir\WEB-INF\classes" />
+	<mkdir dir="${build.path}\dnb.war.dir\WEB-INF\lib" />	
+	   
+        
+   	 
+    <!-- Copy application resources -->
+    
+    <echo message="copying calender directory "/>
+    
+   	<copy  todir="${build.path}\dnb.war.dir\resources\common">  
+   		<fileset dir="${basedir}\statement.war.dir\resources\common"/>
+   	    <fileset dir="${basedir}\agreement.war.dir\resources\common"/>       
+    </copy>
+   	
+   	<copy  todir="${build.path}\dnb.war.dir\resources\agreement">      
+      <fileset dir="${basedir}\agreement.war.dir\resources\agreement"/>       
+    </copy>
+   	
+   	<copy  todir="${build.path}\dnb.war.dir\resources\statement">      
+   	      <fileset dir="${basedir}\statement.war.dir\resources\statement"/>       
+   	    </copy>
+        
+     <echo message="copying WEB-INF directory "/>
+     
+     <copy  todir="${build.path}\dnb.war.dir\WEB-INF">
+        <fileset dir="${basedir}\statement.war.dir\WEB-INF"/>  
+     	<fileset dir="${basedir}\agreement.war.dir\WEB-INF"/>
+     </copy>   
+     
+    <!-- making .war file -->
+	<jar destfile="${build.path}\dnb.war">
+		<fileset dir="${build.path}\dnb.war.dir" includes="**/*.*"/>
+		
+	</jar>	
+      
+    
+  </target>
+</project>
+

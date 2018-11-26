@@ -1,0 +1,125 @@
+/* reset */
+
+html {
+	height:100%;
+}
+
+body {
+	background:#e7ebf1 url(../images/bg-page-login.png) 0 0 repeat-x;
+	text-align:left;
+	font:normal 11px Tahoma, Geneva, sans-serif;
+	color:#252525;
+}
+
+.lg-header {
+	width:312px;
+	margin:0 auto;
+	background:url(../images/logo-login.png) 0 0 no-repeat;
+	padding-top:63px;
+	color:#79818e;
+
+}
+
+.lg-header h1 {
+	display:none;
+}
+
+.lg-header h5 {
+	text-align:center;
+}
+
+#lg-form {
+	width:204px;
+	height:169px;
+	position:absolute;
+	background:url(../images/login-form.png) 0 0 no-repeat;
+	left:50%;
+	top:33%;
+	margin-left:-152px;
+	padding:35px 0 0 104px;
+	font-weight:bold;
+}
+
+
+#lg-form label {
+	display:block;
+	margin-bottom:3px;
+	position:relative;
+}
+
+#lg-form input {
+	border:1px solid #778290;
+	font:bold 12px Tahoma, Arial;
+	color:#d66701;
+	height:19px;
+	padding:4px 0 0 3px;
+	margin-bottom:5px;
+	width:175px;
+	position:relative;
+}
+
+#lg-form button {
+	border:1px solid #778290;
+	color:#444444;
+	font:bold 11px Tahoma, Arial;
+	background:url(../images/bg-but1.png) 0 0 repeat-x;
+	width:85px;
+	height:23px;
+	margin:5px 0 0 95px;
+	position:relative;
+}
+
+.error12 {	
+	
+	background:#fbc4c4;
+	/*border:1px solid #e84c4c;*/
+	color:#e70202;
+	font:bold 11px Tahoma, Arial;
+	padding:10px;
+	text-align:center;
+	margin-top:90px;
+	white-space:nowrap;
+}
+
+.error12.corner {
+	width:16px;
+	height:8px;
+	position:absolute;
+	left:50%;
+	bottom:-8px;
+	margin-left:-8px;
+	background:url(error-corn1.gif) 0 0 no-repeat;
+}
+
+
+#lg-form .loader {
+	background:url(ajax-loader.gif) 0 0 no-repeat;
+	height:16px;
+	width:16px;
+	position:absolute;
+	left:277px;
+	top:10px;
+	display:none;
+
+}
+
+.hideLoader {
+	background:url(../images/ajax-loader.gif) 0 0 no-repeat;
+	height:16px;
+	width:16px;
+	position:absolute;
+	left:277px;
+	top:10px;
+	display:none;
+
+}
+
+.showLoader {
+	background:url(../images/ajax-loader.gif) 0 0 no-repeat;
+	height:16px;
+	width:16px;
+	position:absolute;
+	left:277px;
+	top:10px;
+	display:block;
+}

@@ -1,0 +1,29 @@
+
+                                         Bill Payment Service
+                                         Transmission feedback
+
+
+Sender's code                                 File creation time                             
+99910000SBSAU2277                             09.02.24 16:31                                      
+
+Payer's name                                 Account                  Code                     Due date                      
+                                             29501800000014           00LMP3SAU                24.02.09                      
+
+
+
+
+Faulty bill payment transactions
+
+Number        Payee's name                  Account                  Amount                Reference                               
+
+
+
+Accepted transactions in the material go on for further processing
+
+Material received                              24.02.09  16:32
+
+Accepted transactions                           altogether                         001    EUR           20,00   
+
+Rejected transactions                           altogether                         000    EUR            0,00   
+
+

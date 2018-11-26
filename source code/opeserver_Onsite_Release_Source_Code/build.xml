@@ -1,0 +1,376 @@
+<!--
+######################################################################################
+	Application building script for OPE PATU server.
+	Author : Debadatta Mishra
+	Modification History :
+																						
+    Version No.		Date    	Modified By				Brief description of change
+    OPE1.1 RC3		04-02-09	Saurabh Thakkur			For OPE new architecture
+######################################################################################
+-->
+
+<project name="opeserver" default="dist" basedir=".">
+		<property file="${basedir}/build1.properties"/>
+
+<!--
+######################################################################################
+	Setting the classpath for compiling the java source code.
+######################################################################################
+-->
+	    <path id="classpath">
+			<fileset dir="${lib.dir}" includes="**/*.jar" />
+	    </path>
+		<path id="ejb-classpath">
+			<fileset dir="${lib.dir}" includes="**/*.jar" />
+	    </path>
+	
+		<!--	
+	    <path id="common.bin.classpath">
+			<fileset dir="${common.bin.dir}" includes="**/*.class" />
+    	</path>
+		-->
+<!--
+######################################################################################
+	Deleting the already existing directories and creating the new directories.
+######################################################################################
+-->
+		<target name="init" description="Deleting and creating the directories">
+			<echo>-------------------------------------</echo>
+			<echo>Deleting and creating the directories</echo>
+			<echo>-------------------------------------</echo>
+			
+			<delete		dir="${bin.dir}"/>
+			<delete		dir="${ope.ejb.dist.dir}"/>
+
+			<mkdir		dir="${launcher.bin.dir}"/>
+			<mkdir		dir="${coreftp.bin.dir}"/>
+			<mkdir		dir="${patu.bin.dir}"/>
+			<mkdir		dir="${common.bin.dir}"/>
+			<mkdir		dir="${opeejb.bin.dir}"/>
+			<mkdir		dir="${opewrapper.bin.dir}"/>
+			<mkdir		dir="${common.bin.dir}"/>
+			<mkdir		dir="${opepayment.bin.dir}"/>
+			<mkdir		dir="${opeservlet.bin.dir}"/>
+			<mkdir		dir="${opecoupledftp.bin.dir}"/>
+			<mkdir		dir="${ope.ejb.dist.dir}"/>
+			<mkdir		dir="${ope.ejb.dist.dir}/conf"/>
+		</target>
+
+<!--
+######################################################################################
+	Compiling the java source code and storing the java classes inside bin
+    directory of the application.Copying the other configurations.
+######################################################################################
+-->
+		<target name="compile" depends="init" description="compiling the java source">
+
+			<echo>---------------------------------------</echo>
+			<echo>Compiling the Commonn java source files</echo>
+			<echo>---------------------------------------</echo>
+			<javac srcdir="${common.src.dir}" destdir="${common.bin.dir}" source="1.5" debug="on" includejavaruntime="true">
+				<classpath refid="classpath"/>
+			</javac>
+			<jar destfile="${lib.dir}/${opecommonjar.name}" basedir="${common.bin.dir}">
+			</jar>
+			
+			
+			
+			<echo>-------------------------------------------</echo>
+			<echo>Compiling the OPE wrapper java source files</echo>
+			<echo>-------------------------------------------</echo>
+			<javac srcdir="${opewrapper.src.dir}" destdir="${opewrapper.bin.dir}" source="1.5" debug="on" includejavaruntime="true">
+				<classpath refid="classpath"/>
+			</javac>
+			<jar destfile="${lib.dir}/${opewrapperjar.name}" basedir="${opewrapper.bin.dir}">
+			</jar>
+
+				
+			
+			
+			
+			<echo>--------------------------------------------------</echo>
+			<echo>Compiling the PATU Payment logic java source files</echo>
+			<echo>--------------------------------------------------</echo>
+			<javac srcdir="${payment.src.dir}" destdir="${opepayment.bin.dir}" source="1.5" debug="on" includejavaruntime="true">
+				<classpath refid="classpath"/>
+			</javac>
+			<jar destfile="${lib.dir}/${opepaymentjar.name}" basedir="${opepayment.bin.dir}">
+			</jar>
+			
+			<echo>------------------------------------</echo>
+			<echo>Compiling the PATU java source files</echo>
+			<echo>------------------------------------</echo>
+			<javac srcdir="${patu.src.dir}" destdir="${patu.bin.dir}" source="1.5" debug="on" includejavaruntime="true">
+					<classpath refid="classpath"/>
+			</javac>
+			<jar destfile="${lib.dir}/${opepatujar.name}" basedir="${patu.bin.dir}">
+			</jar>
+			
+			
+			<echo>---------------------------------------</echo>
+			<echo>Compiling the OPE EJB java source files</echo>
+			<echo>---------------------------------------</echo>
+				<javac srcdir="${opeejb.src.dir}" destdir="${opeejb.bin.dir}" source="1.5" debug="on" includejavaruntime="true">
+					<classpath refid="classpath"/>
+				</javac>
+				
+				<jar destfile="${lib.dir}/${opeejbjar.name}" basedir="${opeejb.bin.dir}">
+					<metainf dir="${basedir}/META-INF">
+					</metainf>
+				<manifest>
+					<attribute name="Specification-Title"			value="OPE EJB Server Specification" />
+					<attribute name="Specification-Version"			value="1.0" />
+					<attribute name="Implementation-Vendor"			value="Ideal Invent Technologies" />
+					<attribute name="Specification-Vendor"			value="Ideal Invent Technologies" />
+					<attribute name="Class-Path"					value="${classpath}" />
+					<attribute name="Sealed"						value="true" />
+				</manifest>
+			</jar>
+									
+			
+			<echo>----------------------------------------</echo>
+			<echo>Compiling the Core FTP java source files</echo>
+			<echo>----------------------------------------</echo>
+			<javac srcdir="${coreftp.src.dir}" destdir="${coreftp.bin.dir}" source="1.5" nowarn="on" debug="on" includejavaruntime="true">
+				<classpath refid="classpath"/>
+			</javac>
+			<jar destfile="${lib.dir}/${opeftpjar.name}" basedir="${coreftp.bin.dir}">
+			</jar>
+
+			<echo>----------------------------------------------------</echo>
+			<echo>Compiling the OPE coupled with FTP java source files</echo>
+			<echo>----------------------------------------------------</echo>
+			<javac srcdir="${opecoupledftp.src.dir}" destdir="${opecoupledftp.bin.dir}" source="1.5" debug="on" includejavaruntime="true">
+				<classpath refid="classpath"/>
+			</javac>
+			<jar destfile="${lib.dir}/${opecoupledftpjar.name}" basedir="${opecoupledftp.bin.dir}">
+			</jar>
+
+			<echo>-------------------------------------------</echo>
+			<echo>Compiling the OPE Servlet java source files</echo>
+			<echo>-------------------------------------------</echo>
+			<javac srcdir="${opeservlet.src.dir}" destdir="${opeservlet.bin.dir}" source="1.5" debug="on" includejavaruntime="true">
+				<classpath refid="classpath"/>
+			</javac>
+			<jar destfile="${lib.dir}/${opeservletjar.name}" basedir="${opeservlet.bin.dir}">
+			</jar>
+			
+			<echo>-------------------------------------------</echo>
+			<echo>Compiling the OPE Launcher java source files</echo>
+			<echo>-------------------------------------------</echo>
+			<javac srcdir="${launcher.src.dir}" destdir="${launcher.bin.dir}" source="1.5" debug="on" includejavaruntime="true">
+				<classpath refid="classpath"/>
+			</javac>
+			
+			<echo>---------------------------------------</echo>
+			<echo>Making the jar file of ope-setup.properties</echo>
+			<echo>---------------------------------------</echo>
+			<jar destfile="${lib.dir}/${ope-conf-jar.name}" basedir="${conf.dir}">
+				<include name="ope-setup.properties"/>
+			</jar>
+			
+			
+		</target>
+	
+		<target name="opewar" depends="compile" description="making the war file of ope servlet">
+			<echo>----------------------------------</echo>
+			<echo>Making the war file of ope servlet</echo>
+			<echo>----------------------------------</echo>
+			<war destfile="${ope.ejb.dist.dir}/${opeservletwar.name}" webxml="${basedir}/web.xml">
+			  	<lib dir="${lib.dir}">
+			  		<include name="servlet-api.jar"/>
+			  		<include name="ope-servlet-api.jar"/>
+			  	</lib>
+			</war>
+			
+			<echo>-----------------------</echo>
+			<echo>Making the EJB Jar file</echo>
+			<echo>-----------------------</echo>
+			<jar destfile="${lib.dir}/${ope-ejb-jar.name}" basedir="${opeejb.bin.dir}">
+				
+				<metainf file ="${basedir}/ejb-jar.xml">					
+				</metainf>
+				
+				<manifest>
+					<attribute name="Specification-Title"			value="OPE FTP Server Specification" />
+					<attribute name="Specification-Version"			value="1.0" />
+					<attribute name="Implementation-Vendor"			value="Ideal Invent Technologies" />
+					<attribute name="Specification-Vendor"			value="Ideal Invent Technologies" />
+					<attribute name="Class-Path"					value="${ejb-classpath}" />
+					<attribute name="Sealed"						value="true" />
+				  </manifest>
+			</jar>
+			
+			<!--
+			<ejbjar srcdir="${opeejb.bin.dir}" descriptordir="${basedir}">
+			      <include name="ejb-jar.xml"/>
+			</ejbjar>
+			-->
+			
+		</target>
+	
+		<target name="opeear" depends="opewar" description="making the ear file of ope ejb">
+			<echo>----------------------------------</echo>
+			<echo>Making the ear file of ope servlet</echo>
+			<echo>----------------------------------</echo>
+			
+			<!--
+			<copy todir="${ope.ejb.dist.dir}/conf">
+				<fileset dir="${conf.dir}">
+					<exclude name="startup.vbs"/>
+					<exclude name="idealftpstart.sh"/>
+					<exclude name="startup.sh"/>
+					<exclude name="startup.bat"/>
+				</fileset>
+			</copy>
+			-->
+			
+			<ear destfile="${ope.ejb.dist.dir}/${opeejbear.name}" appxml="${basedir}/application.xml">
+				<!-- 
+					<metainf file ="${lib.dir}/${opeejbjar.name}">					
+					</metainf>
+				-->
+		    	<fileset dir="${lib.dir}" includes="*.jar"/>
+			  	<fileset dir="${ope.ejb.dist.dir}" includes="*.war"/>
+				<!-- <include name = "${ope.ejb.dist.dir}/conf"/> -->
+		    </ear>
+		</target>
+
+<!--
+######################################################################################
+	Copying the necessary config files to bin directory
+######################################################################################
+-->
+		<target name="copyconfig" depends="opeear" description="copying the necessary config files">
+			<copy file="${logprop.file.name}" todir="${bin.dir}"/>
+		</target>
+
+<!--
+######################################################################################
+	Creating the opeserver.jar from the classes from the bin directory
+######################################################################################
+-->
+
+		<target name="createjar" depends="copyconfig" description="creating the opeserver.jar">
+			<echo>-----------------------------------------</echo>
+			<echo>Creating the jar file for opeserver</echo>
+			<echo>-----------------------------------------</echo>
+			<jar destfile="${basedir}/${serverjar.name}" basedir="${launcher.bin.dir}">
+				<manifest>
+					<attribute name="Specification-Title"			value="OPE FTP Server Specification" />
+					<attribute name="Specification-Version"			value="1.0" />
+					<attribute name="Implementation-Vendor"			value="Ideal Invent Technologies" />
+					<attribute name="Specification-Vendor"			value="Ideal Invent Technologies" />
+					<attribute name="Main-Class"					value="Launcher" />
+					<attribute name="Class-Path"					value="${classpath}" />
+					<attribute name="Sealed"						value="true" />
+					<attribute name="Author"						value="Debadatta Mishra" />
+					<attribute name="Built-By"						value="Debadatta Mishra"/>
+			  </manifest>
+			</jar>
+		</target>
+<!--
+######################################################################################
+	Creating the windows distribution
+######################################################################################
+-->
+		<target name="windows.dist" depends="createjar" description="creating windows distribution">
+			<echo>-----------------------------------------------------</echo>
+			<echo>Copying the files and folder for windows distribution</echo>
+			<echo>-----------------------------------------------------</echo>
+
+			<!-- Deleting and creating directories for Windows-->
+			<delete		dir="${windows.dist.dir}"/>
+			<mkdir		dir="${windows.dist.dir}"/>
+			<mkdir		dir="${windows.dist.dir}/log"/>
+			<mkdir		dir="${windows.dist.dir}/data"/>
+
+			<!-- Copying the server jar file -->
+			<copy file="${basedir}/${serverjar.name}" todir="${windows.dist.dir}/lib"/>
+
+			<!-- Copying the startup file -->
+			<copy file="${config.dir}/${windows.startup.ui}"		todir="${windows.dist.dir}"/>
+			<copy file="${config.dir}/${windows.startup.console}"	todir="${windows.dist.dir}"/>
+
+			<!-- Coying the related jar files -->
+			<copy todir="${windows.dist.dir}/lib">
+				<fileset dir="${lib.dir}">
+					<exclude name="coloradoftp-1.25.jar"/>
+				</fileset>
+			</copy>
+
+			<!-- Copying the related configuration files -->
+			<copy todir="${windows.dist.dir}/conf">
+				<fileset dir="${config.dir}" excludes="startup.vbs,log4j.properties,startup.sh,startup.bat"/>
+			</copy>
+			 
+
+			<!-- Copying the related user directories -->
+			<copy todir="${windows.dist.dir}/home">
+				<fileset dir="${home.dir}"/>
+			</copy>
+
+			<!-- Copying the related test directories -->
+			<copy todir="${windows.dist.dir}/testdata">
+				<fileset dir="${testdata.dir}"/>
+			</copy>
+
+		</target>
+<!--
+######################################################################################
+	Creating the unix distribution
+######################################################################################
+-->
+
+		<target name="unix.dist" depends="createjar" description="creating the unix distribution">
+			<echo>--------------------------------------------------</echo>
+			<echo>Copying the files and folder for unix distribution</echo>
+			<echo>--------------------------------------------------</echo>
+
+			<!-- Deleting and creating directories for Unix -->
+			<delete		dir="${unix.dist.dir}"/>
+			<mkdir		dir="${unix.dist.dir}"/>
+			<mkdir		dir="${unix.dist.dir}/log"/>
+			<mkdir		dir="${unix.dist.dir}/data"/>
+
+			<!-- Copying the server jar file -->
+			<copy file="${basedir}/${serverjar.name}"			todir="${unix.dist.dir}/lib"/>
+
+			<!-- Copying the startup file -->
+			<copy file="${config.dir}/${unix.startup.console}"	todir="${unix.dist.dir}"/>
+			<copy file="${config.dir}/${unix.idealstartup.console}"	todir="${unix.dist.dir}"/>
+
+			<!-- Coying the related jar files -->
+			<copy todir="${unix.dist.dir}/lib">
+				<fileset dir="${lib.dir}">
+					<exclude name="coloradoftp-1.25.jar"/>
+				</fileset>	
+			</copy>
+
+			<!-- Copying the related configuration files -->
+			<copy todir="${unix.dist.dir}/conf">
+				<fileset dir="${config.dir}" excludes="startup.vbs,log4j.properties,startup.sh,startup.bat"/>
+			</copy>
+			
+
+			<!-- Copying the related user directories -->
+				<copy todir="${unix.dist.dir}/home">
+					<fileset dir="${home.dir}"/>
+				</copy>
+			<!-- Copying the related test directories -->
+			<copy todir="${unix.dist.dir}/testdata">
+				<fileset dir="${testdata.dir}"/>
+			</copy>
+		</target>
+<!--
+######################################################################################
+	Creating the all distributions
+######################################################################################
+-->
+
+		<target name="dist" depends="windows.dist,unix.dist" description="creating both distribution">
+			<!-- Deleting the server jar file -->
+			<delete file="${basedir}/${serverjar.name}"/>
+		</target>
+
+</project>

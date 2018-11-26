@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="WebApp_1217397012903" version="2.4" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+      
+  <!-- BIRT Report Viewer -->
+
+	<display-name>Eclipse BIRT Report Viewer</display-name>
+
+	<context-param>
+		<param-name>BIRT_VIEWER_LOCALE</param-name>
+		<param-value>en-US</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>BIRT_VIEWER_WORKING_FOLDER</param-name>
+		<param-value></param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>BIRT_VIEWER_DOCUMENT_FOLDER</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- If usr can only access the reprot and document under document folder. Default is false -->
+	<context-param>
+		<param-name>DOCUMENT_FOLDER_ACCESS_ONLY</param-name>
+		<param-value>false</param-value>
+	</context-param>
+
+	<!-- Absolute downloaded image/chart directory. Default to ${birt home}/report/images -->
+	<context-param>
+		<param-name>BIRT_VIEWER_IMAGE_DIR</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Absolute engine log directory. Default to ${birt home}/logs -->
+	<context-param>
+		<param-name>BIRT_VIEWER_LOG_DIR</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Report engine log level -->
+	<context-param>
+		<param-name>BIRT_VIEWER_LOG_LEVEL</param-name>
+		<param-value>OFF</param-value>
+	</context-param>
+
+	<!-- Absolute directory to store all birt report script libraries (JARs). Default to ${birt home}/scriptlib -->
+	<context-param>
+		<param-name>BIRT_VIEWER_SCRIPTLIB_DIR</param-name>
+		<param-value></param-value>
+	</context-param>
+	
+	<!-- Absolute resource location directory. -->
+	<context-param>
+		<param-name>BIRT_RESOURCE_PATH</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Preview report max rows limited. -->
+	<context-param>
+		<param-name>BIRT_VIEWER_MAX_ROWS</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- If always overwrite generated document file. Defalult to true -->
+	<context-param>
+		<param-name>BIRT_OVERWRITE_DOCUMENT</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	
+	<!-- Viewer Servlet Context Listener -->
+	<listener>
+		<listener-class>org.eclipse.birt.report.listener.ViewerServletContextListener</listener-class>
+	</listener>
+	
+	<servlet>
+		<servlet-name>ViewerServlet</servlet-name>
+		<servlet-class>org.eclipse.birt.report.servlet.ViewerServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>EngineServlet</servlet-name>
+		<servlet-class>org.eclipse.birt.report.servlet.BirtEngineServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ViewerServlet</servlet-name>
+		<url-pattern>/frameset</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/run</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/download</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/parameter</url-pattern>
+	</servlet-mapping>	
+	
+	<!-- BIRT Report Viewer Ends Here-->
+	
+   <!-- The Usual Welcome File List -->
+	<welcome-file-list>
+		<welcome-file>/resources/common/jsp/index.jsp</welcome-file>
+	</welcome-file-list>
+	 
+ <!-- Add Session Listener -->
+
+	<listener>
+		<listener-class>com.dnb.common.session.SessionTimeoutHandler</listener-class>
+	</listener>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<!-- Add filter for session -->
+    <filter>
+		<filter-name>UserSessionFilter</filter-name>
+		<filter-class>com.dnb.common.session.UserSessionFilter</filter-class>
+		<init-param>
+			<param-name>exclude</param-name>
+			<param-value>/login.jsp,/Login.do,/css/common_style.css,/js/Common1.js,/images/logo_client.jpg,/images/pc_lock.gif,/images/Picture2.jpg,/images/bottom_bg_login.gif,/js/Common1.js,/index.jsp,/pc_lock.gif,/logo_client.jpg,/Picture2.jpg,/bottom_bg_login.gif,logo_client.jpg,pc_lock.gif,Picture2.jpg,bottom_bg_login.gif,/images/header.jpg,/header.jpg,/images/dmlogologin.jpg,/dmlogologin.jpg,/dmframelogo.jpg,/images/dmframelogo.jpg,/img/logo-login.png,/images/logo-login.png,/common/css/reset.css,/common/css/dm.css,/common/css/login.css,/images/login-form.png,/images/ajax-loader.gif,/images/bg-but1.png,/images/bg-page-login.png,/images/blank.gif,/common/js/jquery.js,/common/js/ifixpng2.js,/common/js/js.js,/common/js/login.js,/common/css/common_dm.css,/images/error-corn1.gif
+			</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>UserSessionFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- Add filter for URL -->
+
+	<filter>
+		<filter-name>UrlFilter</filter-name>
+		<filter-class>com.dnb.agreement.servlet.FilterUrl</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UrlFilter</filter-name>
+		<url-pattern>/jsp/</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>UrlFilter</filter-name>
+		<url-pattern>/css/</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>UrlFilter</filter-name>
+		<url-pattern>/js/</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>UrlFilter</filter-name>
+		<url-pattern>/calendar/</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>UrlFilter</filter-name>
+		<url-pattern>/images/</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>UrlFilter</filter-name>
+		<url-pattern>/WEB-INF/</url-pattern>
+	</filter-mapping>
+
+	<!-- Initialization configuration -->
+	<servlet>
+		<servlet-name>InitializationServlet</servlet-name>
+		<servlet-class>com.dnb.common.servlet.InitializationServlet</servlet-class>
+		<init-param>
+			<param-name>logger</param-name>
+			<param-value>/WEB-INF/classes/logger.properties</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Standard Action Servlet Configuration (with debugging) -->
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml,/WEB-INF/agreement-struts-config.xml</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>2</param-value>
+		</init-param>
+		<init-param>
+			<param-name>detail</param-name>
+			<param-value>2</param-value>
+		</init-param>
+		<init-param>
+			<param-name>validate</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
+		<param-value>en</param-value>
+	</context-param>
+
+	<!-- Standard Action Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- 
+		Gecko browsers require CSS stylesheets served as text/css. By default
+		Tomcat 3.3 serves them as text/css. Tomcat 4 and later are OK. See
+		http://devedge.netscape.com/viewsource/2002/incorrect-mime-types/
+	-->
+	<mime-mapping>
+		<extension>css</extension>
+		<mime-type>text/css</mime-type>
+	</mime-mapping>
+
+	<!-- Struts Tag Library Descriptors -->
+	<jsp-config>
+	<taglib>
+		<taglib-uri>/WEB-INF/struts-bean.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/WEB-INF/struts-html.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/WEB-INF/struts-logic.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+	</taglib>
+	
+	<taglib>
+		<taglib-uri>struts-bean.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>struts-html.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>struts-logic.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>c.tld</taglib-uri>
+		<taglib-location>/WEB-INF/c.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>fmt-1_0.tld</taglib-uri>
+		<taglib-location>/WEB-INF/fmt-1_0.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>fmt.tld</taglib-uri>
+		<taglib-location>/WEB-INF/fmt.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>fn.tld</taglib-uri>
+		<taglib-location>/WEB-INF/fn.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>c-1_0-rt.tld</taglib-uri>
+		<taglib-location>/WEB-INF/c-1_0-rt.tld</taglib-location>
+	</taglib>	
+	 <taglib>
+        <taglib-uri>agreement.tld</taglib-uri>
+        <taglib-location>/WEB-INF/agreement.tld</taglib-location>
+    </taglib>    
+    <taglib>
+			<taglib-uri>birt.tld</taglib-uri>
+			<taglib-location>/WEB-INF/birt.tld</taglib-location>
+	</taglib>
+	
+	</jsp-config>	
+</web-app>

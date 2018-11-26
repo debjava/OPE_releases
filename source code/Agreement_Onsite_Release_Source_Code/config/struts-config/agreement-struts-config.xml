@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+                               "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+<!-- ========== Form Bean Definitions ============ -->
+<form-beans>
+	
+	<!-- Form Bean for Service Bureau -->
+
+	<form-bean name= "ServiceBureauNew" type= "com.dnb.agreement.bean.ServiceBureauBean" />
+	<form-bean name= "ServiceBureauSearch" type= "com.dnb.agreement.bean.ServiceBureauSearchBean"/>
+	<form-bean name= "ServiceBureauDisplay" type= "com.dnb.agreement.bean.ServiceBureauSearchBean" />
+	<form-bean name= "ServiceBureauEdit" type= "com.dnb.agreement.bean.ServiceBureauBean" />
+	<form-bean name= "CreatePatuId" type= "com.dnb.agreement.bean.ServiceBureauBean" />
+	<form-bean name="generateKeys" type="com.dnb.agreement.bean.ServiceBureauBean"/>
+	<form-bean name="ResetKeys" type="com.dnb.agreement.bean.ServiceBureauBean"/>
+	<form-bean name="printkeys" type="com.dnb.agreement.bean.ServiceBureauBean"/>
+
+	<!-- Form Bean for Agreements -->
+	
+	<form-bean name="getCustomerInformation" type="com.dnb.agreement.bean.AgreementCommonBean"/>
+	<form-bean name="getAccountInformation" type="com.dnb.agreement.bean.AgreementCommonBean"/>
+	
+	<form-bean name="agreementnewform" type="com.dnb.agreement.bean.AgreementCommonBean"/>	
+	<form-bean name="servicespecificnewform" type="com.dnb.agreement.bean.ServiceSpecificCommonBean"/>	
+	<form-bean name="servicespecificeditform" type="com.dnb.agreement.bean.ServiceSpecificCommonBean"/>	
+	<form-bean name="servicespecificsearchform" type="com.dnb.agreement.bean.ServiceSpecificCommonBean"/>			
+	<form-bean name="getservicespecificform" type="com.dnb.agreement.bean.ServiceSpecificCommonBean"/>			
+	<form-bean name="agreementsearch" type="com.dnb.agreement.bean.AgreementSearchBean"/>	
+	<form-bean name="agreementdisplay" type="com.dnb.agreement.bean.AgreementSearchBean"/>	
+	<form-bean name="agreemeneditform" type="com.dnb.agreement.bean.AgreementCommonBean"/>
+    <form-bean name="agreemenprintform" type="com.dnb.agreement.bean.AgreementCommonBean"/>
+	<form-bean name="getservicebureaunameform" type="com.dnb.agreement.bean.ServiceSpecificCommonBean"/>
+
+	<form-bean name= "PatuKeyAuditDetailsSearch" type= "com.dnb.agreement.helpdesk.bean.PatuKeyAuditSearchBean" />
+	<form-bean name= "FileTransferAuditDetailsSearch" type= "com.dnb.agreement.helpdesk.bean.FileTransferAuditBean" />
+	
+	<form-bean name="getservicespecifictypeform" type="com.dnb.agreement.bean.ServiceSpecificCommonBean"/>
+	<form-bean name="getServiceIdform" type="com.dnb.agreement.bean.ServiceSpecificCommonBean"/>
+	<form-bean name="deleteservicespecificform" type="com.dnb.agreement.bean.ServiceSpecificCommonBean"/>
+	<form-bean name="servicespecificsearchtypeform" type="com.dnb.agreement.bean.ServiceSpecificCommonBean"/>
+	<form-bean name="servicespecifictypenewform" type="com.dnb.agreement.bean.ServiceSpecificCommonBean"/>
+	<form-bean name="servicespecificedittypeform" type="com.dnb.agreement.bean.ServiceSpecificCommonBean"/>	
+	<form-bean name="servicespecificnewineditform" type="com.dnb.agreement.bean.ServiceSpecificCommonBean"/>	
+	<form-bean name="servicespecifictypenewineditform" type="com.dnb.agreement.bean.ServiceSpecificCommonBean"/>	
+	<form-bean name="getservicespecifictypenewform" type="com.dnb.agreement.bean.ServiceSpecificCommonBean"/>	
+
+</form-beans>
+
+<!-- ========== Action Mapping Definitions ============ -->
+
+<action-mappings>
+
+	<!-- ***************** Add New Service Bureau ********************-->
+
+	<action path= "/resources/agreement/jsp/ServiceBureauNew"
+		  type= "com.dnb.agreement.action.ServiceBureauAction"
+		  name= "ServiceBureauNew"
+		  input= "/resources/agreement/jsp/servicebureaunew.jsp"
+		  scope= "request"
+		  validate= "true" >
+		<forward name= "success" path= "/resources/agreement/jsp/closeaftersave.jsp" />
+		<forward name= "failed" path= "/resources/agreement/jsp/servicebureaunew.jsp" />
+	</action>
+
+	<!-- ***************** Search Service Bureau ********************-->
+
+	<action path= "/resources/agreement/jsp/ServiceBureauSearch"
+		  type= "com.dnb.agreement.action.ServiceBureauSearchAction"
+		  name= "ServiceBureauSearch"
+		  input= "/resources/agreement/jsp/servicebureausearch.jsp"
+		  scope= "request"
+		  validate= "true" >
+			<forward name= "success" path= "/resources/agreement/jsp/servicebureaumainsearch.jsp" />
+			<forward name= "deleted" path= "/resources/agreement/jsp/bureaushowafterdelete.jsp" />
+			<forward name= "failed" path= "/resources/agreement/jsp/servicebureaumainsearch.jsp" />
+	</action>
+
+	<!-- ***************** Display for Edit Service Bureau ******************-->
+
+		<action path= "/resources/agreement/jsp/ServiceBureauDisplay"
+		  type= "com.dnb.agreement.action.ServiceBureauSearchAction"
+		  name= "ServiceBureauDisplay"
+		  input= "/resources/agreement/jsp/servicebureauedit.jsp"
+		  scope= "request"
+		  validate= "true" >
+
+			<forward name= "success" path= "/resources/agreement/jsp/servicebureauedit.jsp" />
+			<forward name= "failed" path= "/resources/agreement/jsp/servicebureaumainsearch.jsp" />
+		</action>
+
+	<!-- ***************** Edit Service Bureau ******************** -->
+		
+		<action path= "/resources/agreement/jsp/ServiceBureauEdit"
+		  type= "com.dnb.agreement.action.ServiceBureauAction"
+		  name= "ServiceBureauEdit"
+		  input= "/resources/agreement/jsp/servicebureauedit.jsp"
+		  scope= "request"
+		  validate= "true" >
+
+			<forward name= "failed" path= "/resources/agreement/jsp/servicebureauedit.jsp" />
+			<forward name= "success" path= "/resources/agreement/jsp/closeaftersave.jsp" />
+			<forward name= "list" path= "/resources/agreement/jsp/servicebureauedit.jsp" />
+			<forward name= "newHold" path= "/resources/agreement/jsp/closeaftersave.jsp" />
+		</action>
+
+		<!-- ***************** Insert Enterprise Date ********************-->
+
+		<action path= "/resources/agreement/jsp/CreatePatuId"
+		  type= "com.dnb.agreement.action.ServiceBureauAction"
+		  name= "CreatePatuId"
+		  input= "/resources/agreement/jsp/getpatuid.jsp"
+		  scope= "request"
+		  validate= "true" >
+
+		<forward name= "success" path= "/resources/agreement/jsp/getpatuid.jsp" />
+		<forward name= "failed" path= "/resources/agreement/jsp/getpatuid.jsp" />
+		<forward name= "list" path= "/resources/agreement/jsp/getpatuid.jsp" />
+		</action>
+
+		<action path= "/resources/agreement/jsp/Logout"
+		  type= "com.dnb.common.action.LogoutAction" 
+		  name= "Logout" 
+		  scope= "request" 
+		  validate= "true" >
+
+		<forward name= "success" path= "/resources/common/jsp/login.jsp" />
+		</action>
+
+		<!--********* ADD NEW AGREEMENT ******************* -->
+
+        <action path="/resources/agreement/jsp/agreementnew" 
+			  type="com.dnb.agreement.action.AgreementAction" 
+			  name="agreementnewform" 
+			  scope= "request"
+			  input="/resources/agreement/jsp/agreementnew.jsp"> 
+
+			  <forward name="success" path="/resources/agreement/jsp/closeaftersave.jsp"/>
+			  <forward name="failed" path="/resources/agreement/jsp/agreementnew.jsp"/> 
+	    </action>
+
+		<!--********* CLEAR NEW AGREEMENT ******************* -->
+
+        <action path="/resources/agreement/jsp/clearagreementnew" 
+			  type="com.dnb.agreement.action.AgreementAction" 
+			  name="agreementnewform" 
+			  scope= "request"
+			  input="/resources/agreement/jsp/agreementnew.jsp"> 
+
+			  <forward name="success" path="/resources/agreement/jsp/clearagreement.jsp"/>
+			  <forward name="failed" path="/resources/agreement/jsp/clearagreement.jsp"/> 
+	    </action>
+	    
+	    <!-- ***************** Print Agreement ******************** -->
+		
+		<action path= "/resources/agreement/jsp/agreementprint"
+		   type= "com.dnb.agreement.action.AgreementPrintAction"
+		   name= "agreemenprintform"
+		   input= "/resources/agreement/jsp/agreementedit.jsp"
+		   scope= "request" >
+
+		   <forward name= "failed" path= "/resources/agreement/jsp/printagreement.jsp" />
+		   <forward name= "success" path= "/resources/agreement/jsp/closeaftersave.jsp" />
+		   <forward name= "list" path= "/resources/agreement/jsp/printagreement.jsp" />
+		   <forward name= "newHold" path= "/resources/agreement/jsp/closeaftersave.jsp" />
+		</action>
+	
+	    <!--******************  ADD NEW SERVICE SPECIFICATION *************-->
+    	<action path="/resources/agreement/jsp/servicespecificnew" 
+			 type="com.dnb.agreement.action.ServiceSpecificAction" 
+			 name="servicespecificnewform" 
+			 scope= "request"
+			 input="/resources/agreement/jsp/servicespecification.jsp"> 
+
+			 <forward name="success" path="/resources/agreement/jsp/closewithnorefresh.jsp"/>
+			 <forward name="failed" path="/resources/agreement/jsp/servicespecification.jsp"/> 
+		</action>
+
+		  <!-- ***************** Show ServiceSpecification ******************** -->
+
+		  <action path="/resources/agreement/jsp/servicespecificationsearch" 
+			 type="com.dnb.agreement.action.ServiceSpecificSearchAction" 
+			 name="servicespecificsearchform" 
+			 scope= "request"
+			 input="/resources/agreement/jsp/agreementedit.jsp"> 
+
+			 <forward name="success" path="/resources/agreement/jsp/servicespecificationedit.jsp"/>
+			 <forward name="failed" path="/resources/agreement/jsp/servicespecificationnewinedit.jsp"/> 
+		</action>
+
+		 <!-- ***************** Get Old ServiceSpecification ******************** -->
+
+		  <action path="/resources/agreement/jsp/getservicespecification" 
+			 type="com.dnb.agreement.action.ServiceSpecificSearchAction" 
+			 name="getservicespecificform" 
+			 scope= "request"
+			 input="/resources/agreement/jsp/agreementnew.jsp"> 
+
+			 <forward name="success" path="/resources/agreement/jsp/getservicespecification.jsp"/>
+			 <forward name="failed" path="/resources/agreement/jsp/servicespecification.jsp"/> 
+		</action>
+
+
+		 <!--******************  EDIT SERVICE SPECIFICATION *************-->
+		 
+    	<action path="/resources/agreement/jsp/servicespecificedit" 
+			 type="com.dnb.agreement.action.ServiceSpecificAction" 
+			 name="servicespecificeditform" 
+			 scope= "request"
+			 input="/resources/agreement/jsp/servicespecificationedit.jsp"> 
+
+			 <forward name="success" path="/resources/agreement/jsp/closewithnorefresh.jsp"/>
+			 <forward name="failed" path="/resources/agreement/jsp/servicespecificationedit.jsp"/> 
+		</action>
+
+
+		<!--******************  SEARCH AGREEMENT ACTION *************-->
+
+    	<action path="/resources/agreement/jsp/agreementsearch" 
+			 type="com.dnb.agreement.action.AgreementSearchAction" 
+			 name="agreementsearch" 
+			 scope= "request"
+			 input="/resources/agreement/jsp/agreementsearch.jsp"> 
+
+			 <forward name="success" path="/resources/agreement/jsp/agreementmainsearch.jsp"/>
+			 <forward name= "deleted" path= "/resources/agreement/jsp/agreementshowafterdelete.jsp" />
+			 <forward name="failed" path="/resources/agreement/jsp/agreementmainsearch.jsp"/> 
+		</action>
+
+		<!-- ***************** Display for Edit Agreement **************-->
+		
+		<action path= "/resources/agreement/jsp/agreementdisplay"
+		    type= "com.dnb.agreement.action.AgreementSearchAction"
+		    name= "agreementdisplay"
+		    input= "/resources/agreement/jsp/agreementedit.jsp"
+		    scope= "request">
+		    
+			<forward name= "success" path= "/resources/agreement/jsp/agreementedit.jsp" />
+			<forward name= "failed" path= "/resources/agreement/jsp/agreementmainsearch.jsp" />
+		</action>
+
+		<!-- ***************** Edit Agreement ******************** -->
+		
+		<action path= "/resources/agreement/jsp/agreementedit"
+		   type= "com.dnb.agreement.action.AgreementAction"
+		   name= "agreemeneditform"
+		   input= "/resources/agreement/jsp/agreementedit.jsp"
+		   scope= "request" >
+
+		   <forward name= "failed" path= "/resources/agreement/jsp/agreementedit.jsp" />
+		   <forward name= "success" path= "/resources/agreement/jsp/closeaftersave.jsp" />
+		   <forward name= "list" path= "/resources/agreement/jsp/agreementedit.jsp" />
+		   <forward name= "newHold" path= "/resources/agreement/jsp/closeaftersave.jsp" />
+		</action>
+		
+		<!-- ***************** Get Customer Information ********************-->
+
+		<action path= "/resources/agreement/jsp/getCustomerInformation"
+		  type= "com.dnb.agreement.action.CustomerAccountAction"
+		  name= "getCustomerInformation"
+		  input= "/resources/agreement/jsp/getcustomerdetails.jsp"
+		  scope= "request"
+		  validate= "true" >
+
+			<forward name= "success" path= "/resources/agreement/jsp/getcustomerdetails.jsp" />
+			<forward name= "failed" path= "/resources/agreement/jsp/getcustomerdetails.jsp" />
+			<forward name= "list" path= "/resources/agreement/jsp/getcustomerdetails.jsp" />
+		</action>
+
+		<!-- ***************** Get Account Information ********************-->
+
+		<action path= "/resources/agreement/jsp/getAccountInformation"
+		  type= "com.dnb.agreement.action.CustomerAccountAction"
+		  name= "getAccountInformation"
+		  input= "/resources/agreement/jsp/getaccountdetails.jsp"
+		  scope= "request"
+		  validate= "true" >
+
+			<forward name= "success" path= "/resources/agreement/jsp/getaccountdetails.jsp" />
+			<forward name= "failed" path= "/resources/agreement/jsp/getaccountdetails.jsp" />
+			<forward name= "list" path= "/resources/agreement/jsp/getaccountdetails.jsp" />
+		</action>
+
+		<!--******************  Get Service Bureau Name  *************-->
+		
+    	<action path="/resources/agreement/jsp/getServiceBureauName" 
+		 type="com.dnb.agreement.action.ServiceSpecificAction" 
+		 name="getservicebureaunameform" 
+		 scope= "request"
+		 input="/resources/agreement/jsp/getbureaunamedetails.jsp"> 
+				
+		 <forward name="failed" path="/resources/agreement/jsp/getbureaunamedetails.jsp"/> 
+		 <forward name="list" path="/resources/agreement/jsp/getbureaunamedetails.jsp"/>
+		</action>
+		
+		<!-- ***************** Generate KEYS ********************-->
+
+		<action path= "/resources/agreement/jsp/generateKeys"
+		  type= "com.dnb.agreement.action.GenerateKeyAction"
+		  name= "generateKeys"
+		  input= "/resources/agreement/jsp/getkeydetails.jsp"
+		  scope= "request"
+		  validate= "true" >
+
+			<forward name= "success" path= "/resources/agreement/jsp/getkeydetails.jsp" />
+			<forward name= "failed" path= "/resources/agreement/jsp/getkeydetails.jsp" />
+			<forward name= "list" path= "/resources/agreement/jsp/getkeydetails.jsp" />
+		</action>
+		
+		<!-- ***************** Reset KEYS ********************-->
+
+		<action path= "/resources/agreement/jsp/ResetKeys"
+		  type= "com.dnb.agreement.action.GenerateKeyAction"
+		  name= "ResetKeys"
+		  input= "/resources/agreement/jsp/getresetkeyresponse.jsp"
+		  scope= "request"
+		  validate= "true" >
+
+			<forward name= "success" path= "/resources/agreement/jsp/getresetkeyresponse.jsp" />
+			<forward name= "failed" path= "/resources/agreement/jsp/getresetkeyresponse.jsp" />
+			<forward name= "list" path= "/resources/agreement/jsp/getresetkeyresponse.jsp" />
+		</action>
+
+		<!-- ***************** Patu Key Audit Details - Help Desk ********************-->
+
+		<action path= "/resources/helpdesk/jsp/PatuKeyAuditDetailsSearch"
+		  type= "com.dnb.agreement.helpdesk.action.PatuKeyAuditDetailsSearchAction"
+		  name= "PatuKeyAuditDetailsSearch"
+		  input= "/resources/helpdesk/jsp/patukeyauditsearch.jsp"
+		  scope= "request"
+		  validate= "true" >
+		<forward name= "success" path= "/resources/helpdesk/jsp/patukeyauditmiddle.jsp" />
+		<forward name= "failed" path= "/resources/helpdesk/jsp/patukeyauditmiddle.jsp" />
+		</action>
+
+		<action path= "/resources/helpdesk/jsp/Logout"
+		  type= "com.dnb.common.action.LogoutAction" 
+		  name= "Logout" 
+		  scope= "request" 
+		  validate= "true" >
+
+		<forward name= "success" path= "/resources/common/jsp/login.jsp" />
+		</action>
+		
+		<!-- ***************** Get Old ServiceSpecification TYPE while new ******************** -->
+
+		  <action path="/resources/agreement/jsp/getservicespecificationtype" 
+			 type="com.dnb.agreement.action.GetServiceSpecificationsAction" 
+			 name="getservicespecifictypeform" 
+			 scope= "request"
+			 input="/resources/agreement/jsp/servicespecification.jsp"> 
+
+			 <forward name="success" path="/resources/agreement/jsp/getservicespecificationtype.jsp"/>
+			 <forward name="failed" path="/resources/agreement/jsp/getservicespecificationtype.jsp"/> 
+		</action>
+
+		<!-- ***************** Get Old ServiceSpecification TYPE while edit ******************** -->
+
+		  <action path="/resources/agreement/jsp/servicespecificationsearchtype" 
+			 type="com.dnb.agreement.action.GetServiceSpecificationsAction" 
+			 name="servicespecificsearchtypeform" 
+			 scope= "request"
+			 input="/resources/agreement/jsp/servicespecificationedit.jsp"> 
+
+			 <forward name="success" path="/resources/agreement/jsp/servicespecificationedittype.jsp"/>
+			 <forward name="failed" path="/resources/agreement/jsp/servicespecificationedittype.jsp"/> 
+		</action>
+
+
+		<!--******************  Delete Service Specification  *************-->
+		
+    	<action path="/resources/agreement/jsp/deleteservicespecification" 
+			type="com.dnb.agreement.action.ServiceSpecificAction" 
+			name="deleteservicespecificform" 
+			scope= "request"
+			input="/resources/agreement/jsp/deleteservicespecificationdetails.jsp"> 
+			
+			<forward name="list" path="/resources/agreement/jsp/deleteservicespecificationdetails.jsp"/>
+			<forward name="failed" path="/resources/agreement/jsp/deleteservicespecificationdetails.jsp"/> 
+			
+		</action>
+
+		<!--******************  Check Service Id exist or not *************-->
+		
+    	<action path="/resources/agreement/jsp/getServiceIdAction" 
+			type="com.dnb.agreement.action.ServiceSpecificAction" 
+			name="getServiceIdform" 
+			scope= "request"
+			input="/resources/agreement/jsp/checkDuplicateserviceIddetails.jsp"> 
+			
+			<forward name="success" path="/resources/agreement/jsp/checkDuplicateserviceIddetails.jsp"/>
+			<forward name="failed" path="/resources/agreement/jsp/checkDuplicateserviceIddetails.jsp"/> 
+			
+		</action>
+
+		<!--******************  Action added to delete temp table data *************-->
+		
+    	<action path="/resources/agreement/jsp/deleteTempTableDataAction" 
+			type="com.dnb.agreement.action.DeleteTempTableDataAction" 
+			name="getServiceIdform" 
+			scope= "request"
+			input="/resources/agreement/jsp/checkDuplicateserviceIddetails.jsp"> 
+			
+			<forward name="success" path="/resources/agreement/jsp/checkDuplicateserviceIddetails.jsp"/>
+			<forward name="failed" path="/resources/agreement/jsp/checkDuplicateserviceIddetails.jsp"/> 
+			
+		</action>
+		
+		<!--******************  ADD NEW SERVICE SPECIFICATION TYPE in new mode*************-->
+    	<action path="/resources/agreement/jsp/servicespecifictypenew" 
+			 type="com.dnb.agreement.action.ServiceSpecificAction" 
+			 name="servicespecifictypenewform" 
+			 scope= "request"
+			 input="/resources/agreement/jsp/servicespecificationtype.jsp"> 
+
+			 <forward name="success" path="/resources/agreement/jsp/closewithnorefresh.jsp"/>
+			 <forward name="failed" path="/resources/agreement/jsp/servicespecificationtype.jsp"/> 
+		</action>
+		
+		<!--******************  EDIT SERVICE SPECIFICATION TYPE*************-->
+		 
+    	<action path="/resources/agreement/jsp/servicespecificedittype" 
+			 type="com.dnb.agreement.action.ServiceSpecificAction" 
+			 name="servicespecificedittypeform" 
+			 scope= "request"
+			 input="/resources/agreement/jsp/servicespecificationedittype.jsp"> 
+
+			 <forward name="success" path="/resources/agreement/jsp/closewithnorefresh.jsp"/>
+			 <forward name="failed" path="/resources/agreement/jsp/servicespecificationedittype.jsp"/> 
+		</action>
+		
+		<!--******************  ADD NEW SERVICE SPECIFICATION IN edit mode*************-->
+    	<action path="/resources/agreement/jsp/servicespecificnewinedit" 
+			 type="com.dnb.agreement.action.ServiceSpecificAction" 
+			 name="servicespecificnewineditform" 
+			 scope= "request"
+			 input="/resources/agreement/jsp/servicespecificationnewinedit.jsp"> 
+
+			 <forward name="success" path="/resources/agreement/jsp/closewithnorefresh.jsp"/>
+			 <forward name="failed" path="/resources/agreement/jsp/servicespecificationnewinedit.jsp"/> 
+		</action>
+		
+		<!--******************  ADD NEW SERVICE SPECIFICATION TYPE in edit mode*************-->
+    	<action path="/resources/agreement/jsp/servicespecifictypenewinedit" 
+			 type="com.dnb.agreement.action.ServiceSpecificAction" 
+			 name="servicespecifictypenewineditform" 
+			 scope= "request"
+			 input="/resources/agreement/jsp/servicespecificationnewinedittype.jsp"> 
+
+			 <forward name="success" path="/resources/agreement/jsp/closewithnorefresh.jsp"/>
+			 <forward name="failed" path="/resources/agreement/jsp/servicespecificationnewinedittype.jsp"/> 
+		</action>
+		
+		<!--******************  GET SERVICE SPECIFICATION TYPE in new mode*************-->
+    	<action path="/resources/agreement/jsp/getservicespecifictypenew" 
+			 type="com.dnb.agreement.action.ServiceSpecificAction" 
+			 name="getservicespecifictypenewform" 
+			 scope= "request"
+			 input="/resources/agreement/jsp/getservicespecificationtype.jsp"> 
+
+			 <forward name="success" path="/resources/agreement/jsp/closewithnorefresh.jsp"/>
+			 <forward name="failed" path="/resources/agreement/jsp/getservicespecificationtype.jsp"/> 
+		</action>
+		
+		<!-- ***************** File Transfer Audit Details - Help Desk ********************-->
+
+		<action path= "/resources/helpdesk/jsp/FileTransferAuditDetailsSearch"
+		  type= "com.dnb.agreement.helpdesk.action.FileTransferAuditDetailsAction"
+		  name= "FileTransferAuditDetailsSearch"
+		  input= "/resources/helpdesk/jsp/filetransferauditsearch.jsp"
+		  scope= "request"
+		  validate= "true" >
+		<forward name= "success" path= "/resources/helpdesk/jsp/filetransferauditmiddle.jsp" />
+		<forward name= "failed" path= "/resources/helpdesk/jsp/filetransferauditmiddle.jsp" />
+		</action>
+
+		<!-- ***************** Print KEYS ********************-->
+
+		<action path= "/resources/agreement/jsp/printkeys"
+		  type= "com.dnb.agreement.action.GenerateKeyAction"
+		  name= "printkeys"
+		  input= "/resources/agreement/jsp/getkeydetails.jsp"
+		  scope= "request"
+		  validate= "true" >
+
+			<forward name= "success" path= "/resources/agreement/jsp/getkeydetails.jsp" />
+			<forward name= "failed" path= "/resources/agreement/jsp/getkeydetails.jsp" />
+			<forward name= "list" path= "/resources/agreement/jsp/getkeydetails.jsp" />
+		</action> 
+</action-mappings>
+</struts-config>

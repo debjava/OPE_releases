@@ -1,0 +1,322 @@
+/* CSS Document */
+body{margin:0px;margin-left:1px; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:10px; color:#434343; 
+		scrollbar-3dlight-color:;
+        scrollbar-arrow-color:#b6804c;
+        scrollbar-base-color:#F2F2F2;
+        scrollbar-track-color:#FFF;
+        scrollbar-darkshadow-color:#FFF;
+        scrollbar-face-color:#F2F2F2;
+        scrollbar-highlight-color:#F2F2F2;
+        scrollbar-shadow-color:#FFF; }
+
+input {border-top: 1px solid #8fadc5; border-left: 1px solid #8fadc5;  border-bottom: 1px solid #8fadc5; border-right: 1px solid #8fadc5; height:16px; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px;}
+
+.class_input { border:0px solid #cccccc;}
+
+select {height:17px; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px;}
+
+.button{ color:#FFFFFF; background:url(../images/button_bg.gif) repeat-x bottom left; font-weight:bold; font-size:9px; padding:1px 5px 2px 5px; height:20px;  border:1px solid #cccccc;}
+
+/* CSS Document */
+
+.nav_bg{ background:url(../images/nav_bg.jpg) left repeat-x;}
+
+.column_title_bg{ background:url(../images/box_bg.gif) repeat-x right; font-weight:bold;}
+.title_bg{ background:url(../images/default.jpg) repeat-x top left; color:#FFFFFF; font-weight:bold; text-align:left;}
+.title_font{ font-weight:bold; font-size:12px; color:#FFFFFF;margin-left:2px;}
+.table_body_bg_red{ background:url(../images/column_border_bg.gif); padding:6px;  line-height:18px; font-size:11px; text-align:left;}
+.table_body_bg_white{ background:url(../images/column_border_bg_white.gif);}
+
+/* Top Navigation */
+
+#nav { float:left;top:100px;margin:0px;padding:1px 0px 1px 1px; list-style: none; font-size:11px;}
+#nav li { float: left; padding: 0 0px 0 0; list-style: none; background: url(../images/na-li-bg.gif) no-repeat top right; }
+#nav a { float: left; padding: 7px 10px 7px 9px; text-decoration: none; border-bottom: none; color: #FFFFFF; font-weight:bold; margin-left:0px} 
+#nav a:hover { color: #993300; background:url(../images/nav_hov_bg.gif) repeat-x top right; }
+#subnav { float:left; width:1003px; margin-top:13px !important; margin-top:13px; padding: 0px 0px 0px 0px; list-style: none; background-color:#FFFFFF;  }
+#subnav li { float: left; margin: 0; padding: 0 1px 0 0; list-style: none; background:url(../images/subnav-li-bg.gif) no-repeat top right;  }
+
+#subnav a { float: left; padding: 6px 14px ; text-decoration: none;  font-weight:normal; border-bottom: none; color: #424242;  } 
+#subnav a:hover { color: #dc5c06; background:none; }
+subnav a.active { font-weight: bold;  }
+
+.navwf {  float:left; top:0px;  margin: 0px 0px 0px 0px; padding: 0px 0px 1px 0px; list-style: none; font-size:11px; font-weight:bold; color: #FFFFFF;}
+
+#subnav_doc { float:left; width:1003px; margin-top:13px !important; margin-top:13px; padding: 0px 0px 0px 0px; list-style: none; background-color:#FFFFFF;  }
+#subnav_doc li { float: left; margin: 0; padding: 0 1px 0 0; list-style: none; background:url(../images/subnav-li-bg.gif) no-repeat top right;  }
+
+#subnav_doc a { float: left; padding: 1.8px 14px ; text-decoration: none;  font-weight:normal; border-bottom: none; color: #424242;  } 
+#subnav_doc a:hover { color: #dc5c06; background:none; }
+subnav_doc a.active { font-weight: bold;  }
+
+.linkahand1 {cursor:pointer; text-decoration:none; color:#0000FF;}
+
+/* Page Content Left Column */
+.hot_news1 { margin: 7px; padding: 0 0 0 10px; }
+
+.left_title{ color:#FFFFFF; font-weight:bold; text-align:left; }	
+.left_copy{ padding:6px;  font-size:11px; line-height:18px; text-align:left;}
+
+ul.left_column { margin: 0; padding: 5px 0 2px 10px; text-align:left; color:#cc6633; }
+ul.left_column li { margin: 0; padding: 0 0 0 15px; list-style:none; background: url(../images/arrow_li.gif) no-repeat 0 8px; display: block; line-height:18px;  font-size:11px; }
+ul.left_column { padding: 0 0 -10px 0;}
+ul.left_column a, ul.left_column a:visited { color: #eb4d00; text-decoration: none; }
+ul.left_column a:hover { color: #CC0000; text-decoration: underline; }
+ul.left_column a:active { color: #000; text-decoration: none; }
+
+ul.left_column_nobullet { margin: 0; padding: 5px 0 2px 5px; text-align:left; color:#cc6633; }
+ul.left_column_nobullet li { margin: 0; padding: 0 0 0 5px; list-style:none; display: block; line-height:18px;  font-size:11px; }
+ul.left_column_nobullet { padding: 0 0 -10px 0;}
+ul.left_column_nobullet a, ul.left_column_nobullet a:visited { color: #eb4d00; text-decoration: none; }
+ul.left_column_nobullet a:hover { color: #CC0000; text-decoration: underline; }
+ul.left_column_nobullet a:active { color: #000; text-decoration: none; }
+
+ul.left_column_admin { margin: 0; padding: 0 0 0 10px;}
+ul.left_column_admin li { margin: 0; padding: 0 0 0 20px; list-style:none; background: url(../images/arrow_li.gif) no-repeat 0 8px; display: block; line-height:2em; font-size:11px; }
+ul.left_column_admin { padding: 0 0 -10px 0; }
+ul.left_column_admin a, ul.left_column__admin a:visited { color: #eb4d00; text-decoration: none; }
+ul.left_column_admin a:hover { color: #CC0000; text-decoration: underline; }
+ul.left_column_admin a:active { color: #000; text-decoration: none; }
+
+.glowlinks { margin: 0;position:relative;}
+#glowc a{ width:220px; height:18px; background-color:#E0E1E1; color:red;  text-decoration:none;  display: block;font-size:11px; }
+#glowc a:hover{ height: 18px; color: #CC0000; text-decoration: underline;  }
+
+.glowlinks1 {margin: 0;  height:18px;position:relative;}
+#glowc1 a{ width:220px;height:18px;   text-decoration:none; color:red;  display: block; font-size:11px;  }
+#glowc1 a:hover{ height: 18px; color: #CC0000; text-decoration: underline;  }
+
+ul.information_column { margin: 0; padding: 0 0 0 10px; }
+ul.information_column li { margin: 0; padding: 0 0 0 20px; list-style:none; background: url(../images/arrow_li.gif) no-repeat 0 8px; display: block; line-height:2em; font-size:11px; }
+ul.information_column { padding: 0 0 -10px 0;}
+ul.information_column a, ul.information_column a:visited { color: #eb4d00; text-decoration: none; }
+ul.information_column a:hover { color: #CC0000; text-decoration: underline; }
+ul.information_column a:active { color: #000; text-decoration: none; }
+
+
+/* Page Content Main Stage */
+.channel_bg{ background:url(../images/Picture2.jpg) repeat-x top left; font-weight:bold; }
+.channel_bg1{ background:url(../images/channel_bg1.gif) repeat-x top left; }
+
+.list_bg_color{ background:#FDF2EE; height:16px; border-right:2px solid #fff;  }
+.list_bg_plain{ background:#FFF; height:16px;}
+
+.list_bg_color_sep{ height:17px; background-color:#FDF2EE; border-right:1px solid #fff; padding-left:2px; }
+.list_bg_plain_sep{ height:17px; border-right:1px solid #fff; padding-left:2px;}
+
+.search_list_sep1{ background:url(../images/channel_bg2.gif) repeat-x top left;  font-weight:bold; height:23px;}
+.search_list_sep{ background:url(../images/channel_bg2.gif) repeat-x top left;  font-weight:bold;}
+ 
+.form_search td{ padding:4px 1px 0px 1px; height:18px; vertical-align:bottom;}
+
+/* sub menu_content Navigation */
+#sub_menu_cont { float:left; width:100%; top:100px;  margin: 0; padding: 1px 0px 0px 0px; list-style: none; font-size:10px; font-weight:bold; }
+#sub_menu_cont li { float: left; padding: 0 1px 0 0; list-style: none;  background: url(../images/na-li-bg1.gif) no-repeat right; }
+#sub_menu_cont a { float: left; padding: 3px 10px; text-decoration: none;  color: #333333; } 
+#sub_menu_cont a:hover { color: #333333; background:url(../images/nav_hov_bg1.gif) repeat-x bottom right; }
+.sub_menu_cont_bg{ background:url(../images/column_title_bg001.gif) repeat-x top left; }
+
+/*edited on 28 oct 2006 by pradeep */
+
+.button {  background:#EB001F; color:#FFFFFF; border:#c0c0c0 solid 1px;}
+.title_name { font-size:11px;}
+.title_data { font-size:11px; font-weight:bold;} 
+.white_text { font-size:10px; font-weight:bold; color:#FFFFFF;}
+.left_home { list-style:none; margin:6px 0 6px 5px;}
+.left_home li { padding:0 0 3px 0;}
+.left_home1 { width:190px; list-style:none; margin:6px 0 6px 5px; color:#cc6633}
+.left_home1 li { padding:0 0 3px 12px; background:url(../images/arrow_li1.gif) no-repeat left top;}
+.left_home2 {list-style:none; margin:0; color:#cc6633}
+.left_home2 li { padding:0 0 3px 12px; }
+
+.channel_bg1{ background:url(../images/channel_bg1.gif) repeat-x top left; }
+.channel_bg3{ background:url(../images/channel_bg2.gif) repeat-x top left;  font-weight:bold;}
+
+.sev_bg{ height:17px; background-color:#FFF2E8; border-right:1px solid #fff; padding-left:2px;  }
+/*end*/
+
+.highlight{ font-weight:normal; color:#f06604; font-size: 8pt; font-family:Verdana, Arial, Helvetica, sans-serif; text-decoration:none; }
+
+/* P tag for the forms */
+p.cont_login { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:#333333; text-align:justify; margin:0; padding:0;}
+p.login_userpass { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:#000000; margin:0; padding:0;}
+p.copy { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:9px; color:#000000; margin:0; padding:0;}
+p.error { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px;font-weight:bold; color:RED; margin:0; padding:0;height:17px; background-color:#EBEBEB; border-right:1px solid #fff;}
+p.title { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:#000000; margin:0; padding:0; font-weight:bold;}
+p.version { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:#333333; margin:0; padding:0; }
+p.version_black { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:black; margin:0; padding:0; }
+p.version_white { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:white; margin:0; padding:0; }
+
+p.lmvkey{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:#000000; margin:0; padding:0;}
+
+/* a tag for the forms */
+a.links1 {cursor:pointer; text-decoration:none; color:#810541;}
+a.links2 {cursor:pointer; text-decoration:none; color:#0000FF;}
+
+/* Sets color for the asterisk  */
+.asterisk{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:RED; margin:0; padding:0;}
+
+/* set selectbox[multiple] - properties  */
+.multipleSelect { border:1px solid #999999; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; }
+
+
+/* hover effect for actions - properties  */
+.more{ font-weight:bold; color:#EB001F; text-align:right; padding-bottom:5px;font-size:12px;}
+.ahover1 { float: left; padding: 7px 15px; text-decoration: none; border-bottom: none; color: #424242; } 
+.ahover2 { color: #424242; background:url(../images/nav_hov_bg1.gif) repeat-x top right; cursor:pointer;}
+.ahover3 { background:url(../images/nav_hov_bg.gif) repeat-x top right; cursor:pointer; color: #993300; font-weight:bold; font-size:11px;}
+.ahand { cursor:pointer; }
+.ahand1 { cursor:none; }
+.ahand2 {cursor:pointer; text-decoration: none; color:#000000;}
+.moreahand { cursor:pointer; text-decoration:underline; color:#810541; }
+.moreahand1 {cursor:pointer; text-decoration:underline; color:#0000FF;font-size:12px;}
+.logout{ color: #424242;  list-style: none;background: repeat-x top right; }
+.logout1{ color: #424242; cursor:pointer; background:url(../images/nav_hov_bg.gif) repeat-x  right; padding:0px 0px 0px 0px; }
+
+/* sets background color of table row to blue - 
+   this gives an hover effect*/
+.ahoverRow { background:url(../images/box_bg.gif); padding-left:2px;}
+
+/* set HR-line - properties */
+.clsHr { border: .1em solid #336699; }
+
+/* set page labels - Normal  */
+.clsLabel { font-size: 8pt; font-family:Verdana, Arial, Helvetica, sans-serif; text-decoration:none; color:#000000; }
+
+.clsMesg { font-weight: bold; font-size: 10pt; font-family:Verdana, Arial, Helvetica, sans-serif; text-decoration:none; color:#000000; }
+
+/* set page labels - Big,Bold  */
+
+.clsLabelBold { font-weight: bold; font-size: 8pt; font-family:Verdana, Arial, Helvetica, sans-serif; font-variant: normal; font-style: normal; text-decoration:none; color:#000000; }
+
+/*sets message text font normal or bold based on message status */
+.mesg_bg_normal_sep{font-weight:normal; }
+.mesg_bg_bold_sep{font-weight:bold; }
+
+/*sets background for message table header */
+.mesg_column_title_bg{ background:url(../images/bg_sev.gif) repeat-x top left; font-weight:bold;}
+
+/* sets background color of message details table row to grey - 
+   this gives an hover effect*/
+.ahoverRowMesg {
+	background:url(../images/nav_bg_ash.gif); 
+}
+
+.general_title_font{font-size:12px; font-weight:bold; color:#333333;margin:6px;}
+
+.list_bg_color_sep1{ height:17px; background-color:#E0E1E1; border-right:1px solid #fff; padding-left:2px; }
+.list_bg_plain_sep1{ height:17px; border-right:1px solid #fff; padding-left:2px;}
+
+/* Sets background for error message */
+.error_mesg_bg_color{font-family:Verdana, Arial, Helvetica, sans-serif;font-weight:bold; font-size:11px; color:RED; margin:0; padding:0; height:12px; background-color:#EBEBEB; border-right:1px solid #fff;}
+
+.disabled_textbox{background-color:#EBEBEB;}
+
+/* class is used to highlight the link tree */
+.HighLight_LinkTree { font-family:Verdana, Arial, Helvetica, sans-serif;font-weight:bold; font-size:11px; color:#000000; margin:0; padding:0;}
+
+.defaultahover{ color: #424242; background:url(../images/nav_hov_bg1.gif) repeat-x top right; cursor:none;}
+
+.more_link{font-family:Verdana, Arial, Helvetica, sans-serif;margin:0; padding:0;font-weight:bold; color:#cc6633; padding-bottom:5px;}
+
+.more_ahand{cursor:pointer; text-decoration:underline; color:#0000FF;font-weight:bold;}
+
+.more_href{ font-weight:bold; color:#cc6633; text-align:right; padding-bottom:5px;text-decoration:none;}
+
+.prev_next{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; color:#EB001F; margin:0; padding:0;font-weight:bold;}
+
+.prev_next_hand{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; color:#0000FF; margin:0; padding:0;cursor:pointer; text-decoration:none;font-weight:bold;}
+
+.click_link_normal{font-family:Verdana, Arial, Helvetica, sans-serif;margin:0; padding:0;font-weight:normal; color:#cc6633; padding-bottom:5px;}
+
+.click_ahand_normal{cursor:pointer; text-decoration:underline; color:#0000FF;font-weight:normal;}
+
+/* class for buttons menubar in popups */
+#sub_menu_cont_pop { float:left; width:100%; top:100px;  margin: 0; padding: 1px 0px 0px 0px; list-style: none; font-size:10px; font-weight:bold; }
+#sub_menu_cont_pop li { float: left; padding: 0 1px 0 0; list-style: none;  background: url(../images/na-li-bg1.gif) no-repeat right; }
+#sub_menu_cont_pop a { float: left; padding: 3px 10px; text-decoration: none;  color: #333333; } 
+#sub_menu_cont_pop a:hover { color: #333333; background:url(../images/nav_hov_bg1.gif) repeat-x bottom right; }
+.sub_menu_cont_bg_pop{ background:url(../images/column_title_bg001.gif) repeat-x top left; }
+
+.normalpointer{ cursor:default; }
+
+p.pipe {font-size:16px; color:#000000; margin:0; padding:0;}
+
+/* class for table rows without seperator */
+.list_bg_color_nosep{ height:17px; background-color:#FFF2E8; border-right:0 solid #fff; padding-left:2px; }
+.list_bg_plain_nosep{ height:17px; border-right:0 solid #fff; padding-left:2px;}
+
+.tableContainer_eod {
+position: relative; /* to capture the absolutely positioned table header */
+padding-top: 24px; /* space for the column heads */
+margin: 0 auto;
+width: 100%; 
+}
+
+/* position the row of column heads above the table */
+.tableContainer_eod thead tr {
+position: absolute; /* throws the header out of the table */
+top: 1px;
+left:1px;
+border:1;
+height:24px;
+width:auto;
+}
+
+/* this enables the table to scroll without scrolling the page */
+.innerframeForBatchList {
+overflow: auto;
+width: auto;
+height: 216px; 
+border:1;
+}
+
+/* set the font format to the label in fieldset */
+
+.fieldset_legend{ font-size: 8pt; font-family:Verdana, Arial, Helvetica, sans-serif; text-decoration:none;}
+
+/* agreement css */
+
+.links{font-family:Verdana, Arial, Helvetica, sans-serif;margin:0; padding:0;font-size:12px;font-weight:none; color:red; padding-bottom:3px;}
+
+.horizontal_rule{ background:url(../images/default.jpg); border:.1em solid;}
+
+/* normal font and bold font in paragraph */
+p.label_normal { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:#000000; margin:0; padding:0;}
+p.label_bold { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:#000000; margin:0; padding:0;font-weight:bold;}
+
+p.label_normal_small { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:10px; color:#000000; margin-left:0; padding:0;width: 78%; }
+p.label_normal_very_small { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:9px; color:#000000; margin-left:0; padding:0;width: 78%; }
+p.label_bold_small { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:10px; color:#000000; margin:0; padding:0;font-weight:bold;}
+p.label_normal_italic { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:#000000; margin:0; padding:0;font-style: italic;}
+.hr1 {margin-left: 0; color:#000000; width: 32%;}
+
+/* scrollbars */
+
+#agreement_new_scrollbar{ height:440px; width:100%; overflow:auto;}
+#agreement_table_scrollbar{ height:120px; width:70%; overflow:auto;}
+#service_table_scrollbar{ height:120px; width:70%; overflow:auto;}
+#agreement_service_table{ height:190px; width:99%; overflow:auto;}
+#agreement_edit_scrollbar{ height:390px; width:100%; overflow:auto;}
+#service_new_scrollbar{ height:440px; width:100%; overflow:auto;}
+
+#bureau_new_scrollbar{ height:338px; width:100%; overflow:auto;}
+#bureau_edit_scrollbar{ height:298px; width:100%; overflow:auto;}
+
+/* common class for radio button,checkbox,text area and etc */
+
+.radio {border:none;}
+.checkbox { border:0px solid #CCCCCC; color:#000066; height:18px; margin:0px 0px 0px 0px;}
+.text_area {font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px;}
+.font_white{ font-weight:bold; font-size:10px; color:#FFFFFF;}
+.view_link{text-decoration:none;}
+.high_light{ font-weight:bold;  color:#f06604;}
+.textbox_bold {font-weight:bold;}
+
+/* onmouse over changing the color of text for Agreement */
+
+.textoff{color:#000000;cursor:pointer;}
+.texton{color:#CC0000;cursor:pointer;}
+
+/* this is used to set the font format to the label in fieldset */
+.clsLegendLabel { font-size: 8pt; font-family:Verdana, Arial, Helvetica, sans-serif; text-decoration:none;}

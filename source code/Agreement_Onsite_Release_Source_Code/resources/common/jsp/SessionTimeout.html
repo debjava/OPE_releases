@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<html>
+<head>
+<title> Login </title>
+<link href="resources/common/css/common_style.css" rel="stylesheet" type="text/css" />
+<link href='<c:url value="/resources/common/css/common_dm.css"/>' rel="stylesheet" type="text/css" />
+<script language="javascript">
+function closepopup()
+{
+window.opener = "any not null value";
+qwe=window.open("../../common/jsp/index.jsp", null,"scrollbars=yes,status=yes,toolbar=yes,menubar=yes,resizable=yes,location=yes,top=0,left=0");
+qwe.resizeTo(screen.width,screen.height);
+}
+
+</script>
+<style>
+.shadowbody {
+	background:#d8dee9;
+	font:normal 12px Tahoma, Arial;
+	color:#1e1e1e;
+}
+</style>
+</head>
+<body class="shadowbody">
+<br>
+<p class="login_userpass" align="center">
+<br>
+Your session has timed out. You need to login.
+<br>
+<a href="javascript:closepopup();" >Click here to login </a>
+</p>
+</body>
+</html>

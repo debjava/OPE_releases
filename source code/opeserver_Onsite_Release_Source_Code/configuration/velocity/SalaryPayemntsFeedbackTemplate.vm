@@ -1,0 +1,44 @@
+## This is an example velocity template
+
+#foreach($feedback in $list)
+                                         $!feedback.FB_SALARY_PAYMENT_SERVICE
+                                         $!feedback.FB_TRANSMISSION_FEEDBACK
+
+
+$!feedback.FB_SENDERS_CODE_HEADER                        $!feedback.FB_CUSTOMER_DATA_HEADER                             
+$!feedback.SENDERS_CODE   $!feedback.CUSTOMER_DATA                                      
+
+$!feedback.FB_PAYERS_NAME_HEADER$!feedback.FB_ACCOUNT_HEADER$!feedback.FB_CODE_HEADER$!feedback.FB_PAYMENT_DATE_HEADER
+$!feedback.PAYERS_NAME$!feedback.PAYERS_ACCOUNT_NO$!feedback.PAYERS_CODE$!feedback.PAYERS_DUE_DATE
+
+#set($status="N")
+#foreach($sum_records in $!feedback.TRANS_SUM)
+#set($status="Y")
+#end
+#foreach($sum_records in $!feedback.TRANS_SUM)
+      $!sum_records
+#end
+#set($rejected = $!feedback.N)
+#if($rejected=="N")
+$!feedback.REJECTED_TRANSACTIONS_FB
+#end
+
+#if($status=="N")
+$!feedback.FB_NUMBER_HEADER$!feedback.FB_PAYEES_NAME_HEADER$!feedback.FB_ACCOUNT_HEADER_TRANS$!feedback.FB_AMOUNT_HEADER_TRANS$!feedback.FB_ID_NUMBER_HEADER
+#foreach($trans_records in $!feedback.TRANS_LIST)$!trans_records.SEQ_NO$!trans_records.PAYEES_NAME$!trans_records.PAYERS_ACC_NO$!trans_records.AMOUNT$!trans_records.ID_NUMBER #foreach($trans_errors in $!trans_records.ERRORS_MSG)
+$!trans_errors
+#end
+
+#end
+
+       $!feedback.FB_ERRORS
+
+$!feedback.FB_MATERIAL_RECEIVED
+
+$!feedback.ACCEPTED_TRANSATIONS                $!feedback.ALTOGETHER_1            $!feedback.ACCEPTED_VAL         $!feedback.ACCEPTED_VALUES $!feedback.CURRENCY_EUR_1
+
+$!feedback.REJECTED_TRANSATIONS                $!feedback.ALTOGETHER_2            $!feedback.REJECTED_VAL         $!feedback.REJECTED_VALUES $!feedback.CURRENCY_EUR_2
+
+$!feedback.REMARK
+#end
+#end    

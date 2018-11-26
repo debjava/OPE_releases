@@ -1,0 +1,4 @@
+## This is an example velocity template
+#foreach($ack in $list)
+$!ack.FILE_TYPE$!ack.CURRENCY$!ack.BATCHES$!ack.NO_OF_TRANSACTIONS$!ack.SUM_OF_TRANSACTIONS$!ack.TRANSACTIONS_SIGN$!ack.NO_OF_CREDITS$!ack.SUM_OF_CREDITS$!ack.CREDITS_SIGN$!ack.DATE$!ack.TIME$!ack.RETURN_CODE$!ack.NO_OF_NOTIFICATION_LINE$!ack.NOTIFICATION_LINE
+#end

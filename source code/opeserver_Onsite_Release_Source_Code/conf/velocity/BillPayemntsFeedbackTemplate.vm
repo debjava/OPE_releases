@@ -1,0 +1,53 @@
+## This is an example velocity template
+
+#foreach($feedback in $list)
+                                         $!feedback.BILL_PAYMENT_SERVICE
+                                         $!feedback.TRANSMISSION_FEEDBACK
+
+
+$!feedback.SENDERS_CODE_HEADER      $!feedback.FILE_CREATION_TIME_HEADER                             
+$!feedback.FB_SENDERS_CODE  $!feedback.FILECREATIONDATE                                      
+
+$!feedback.PAYERS_NAME_HEADER$!feedback.ACCOUNT_HEADER$!feedback.CODE_HEADER$!feedback.DUE_DATE_HEADER
+$!feedback.PAYERS_NAME$!feedback.PAYERS_ACCOUNT_NO$!feedback.FB_PAYERS_CODE$!feedback.PAYERS_DUE_DATE
+
+#set($status="N")
+
+#foreach($sum_records in $!feedback.SUM_LIST)
+#set($status="Y")
+#end
+#foreach($batch_records in $!feedback.BATCH_LIST)
+      $!batch_records
+#end
+#foreach($sum_records in $!feedback.SUM_LIST)
+      $!sum_records
+#end
+
+#foreach($batch_records in $!feedback.BATCH_LIST)
+#set($status="Y")
+      $!feedback.MATERIAL_RECEIVED
+#end
+
+#if($status=="N")
+$!feedback.FAULTY_BILL_PAYMENT_TRANSACTIONS
+
+$!feedback.NUMBER_HEADER$!feedback.PAYEES_NAME_HEADER$!feedback.ACCOUNT_HEADER_TRANS$!feedback.AMOUNT_HEADER_TRANS$!feedback.REFERENCE
+#foreach($trans_records in $!feedback.TRANS_LIST)$!trans_records.SEQ_NO$!trans_records.PAYERS_NAME$!trans_records.PAYERS_ACC_NO$!trans_records.PAYERS_SUM$!trans_records.PAYERS_REF_NO#foreach($trans_errors in $!trans_records.ERRORS_MSG)
+$!trans_errors
+#end
+
+#end
+
+$!feedback.ERRORS
+
+$!feedback.ACCEPTED_TRANS
+
+$!feedback.MATERIAL_RECEIVED
+
+$!feedback.ACCEPTED_TRANSATIONS                           $!feedback.ALTOGETHER_1            $!feedback.ACCEPTED_VAL    $!feedback.CURRENCY_EUR_1  $!feedback.ACCEPTED_AMT 
+
+$!feedback.REJECTED_TRANSATIONS                           $!feedback.ALTOGETHER_2            $!feedback.REJECTED_VAL    $!feedback.CURRENCY_EUR_2  $!feedback.REJECTED_AMT 
+
+$!feedback.REMARK
+#end
+#end

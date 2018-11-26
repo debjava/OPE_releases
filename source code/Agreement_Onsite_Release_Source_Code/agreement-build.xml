@@ -1,0 +1,181 @@
+<project name="Agreement 1.0" default="agreement" basedir=".">
+
+		<property file="agreement-build.properties" />
+		<property name="agreement.war.file"	value="agreement.war"/>
+
+<path id="compile.classpath">
+		<fileset dir="${basedir}/lib/struts">
+		  <include name="*.jar"/>
+		</fileset>
+	    
+	    <fileset dir="${basedir}/lib/jstl">
+	      <include name="*.jar"/>
+	    </fileset>
+	    
+		<fileset dir="${basedir}/lib/OracleDriver">
+	      <include name="*.jar"/>
+	    </fileset>
+	    
+		<fileset dir="${basedir}/lib/commons">
+	      <include name="*.jar"/>
+	    </fileset>
+	    
+		<fileset dir="${basedir}/lib/log4j">
+	      <include name="*.jar"/>
+	    </fileset>
+	    
+	    <fileset dir="${basedir}/lib/servlet">
+	      <include name="*.jar"/>
+	    </fileset> 
+		
+		<fileset dir="${basedir}/lib/login">
+		      <include name="*.jar"/>
+		</fileset>
+	
+		<fileset dir="${basedir}/lib/quartz">
+			      <include name="*.jar"/>
+		</fileset>
+  </path>
+  <!--
+	######### init ####################################
+	Deleting and creating the directories
+	###################################################
+  -->
+  <target name="init" description="delete and create dirs">
+	<delete dir="${build.path}"/>
+	<mkdir dir="${build.path}\agreement.war.dir" /> 
+    <mkdir dir="${build.path}\agreement.war.dir\resources" /> 
+   	<mkdir dir="${build.path}\agreement.war.dir\resources\common" />
+   	<mkdir dir="${build.path}\agreement.war.dir\resources\agreement" />
+   	
+   	<mkdir dir="${build.path}\agreement.war.dir\resources\helpdesk" />  
+   	<mkdir dir="${build.path}\agreement.war.dir\documents" /> 	
+    <mkdir dir="${build.path}\agreement.war.dir\report" /> 
+    <mkdir dir="${build.path}\agreement.war.dir\report\images" /> 	
+   	<mkdir dir="${build.path}\agreement.war.dir\logs" />
+   	<mkdir dir="${build.path}\agreement.war.dir\webcontent" /> 	
+   	<mkdir dir="${build.path}\agreement.war.dir\scriptlib" /> 	
+      	   	
+	<mkdir dir="${build.path}\agreement.war.dir\WEB-INF" /> 
+	<mkdir dir="${build.path}\agreement.war.dir\WEB-INF\classes" />
+	<mkdir dir="${build.path}\agreement.war.dir\WEB-INF\lib" />	
+	
+	<mkdir dir="${build.path}\agreement.war.dir\WEB-INF\platform" /> 
+	
+	<mkdir dir="${basedir}\build" />
+   	<mkdir dir="${basedir}\build\agreementsrc" />
+      
+    <delete includeEmptyDirs="true">
+     <fileset dir="${basedir}\build\agreementsrc\" includes="**/*" />
+    </delete>
+
+  </target>
+    <!--
+	######### copy ####################################
+	Copying the necessary files and folders and
+	application resources
+	###################################################
+  -->
+  <target name="copy" depends="compile" description="copy the necessary files and folders">
+      
+   	<copy  todir="${build.path}\agreement.war.dir\resources\agreement">      
+      <fileset dir="${basedir}\resources\agreement"/>       
+    </copy>
+   	
+   	<copy  todir="${build.path}\agreement.war.dir\resources\common">      
+   	      <fileset dir="${basedir}\resources\common"/>       
+    </copy>
+    
+    <copy  todir="${build.path}\agreement.war.dir\resources\helpdesk">      
+   	      <fileset dir="${basedir}\resources\helpdesk"/>       
+    </copy>
+    
+     <copy  todir="${build.path}\agreement.war.dir\WEB-INF\platform">
+      <fileset dir="${basedir}\config\birt_2_1_1\platform" includes="**/*.*"/>
+    </copy>
+    
+    <copy  todir="${build.path}\agreement.war.dir\report\images">      
+   	      <fileset dir="${basedir}\config\birt_2_1_1\report\images" includes="*.*"/>          	      
+    </copy>
+    
+    <copy  todir="${build.path}\agreement.war.dir\logs">      
+   	      <fileset dir="${basedir}\config\birt_2_1_1\logs" includes="*.*"/>
+    </copy>
+    
+    <copy  todir="${build.path}\agreement.war.dir\webcontent">      
+   	       <fileset dir="${basedir}\config\birt_2_1_1\webcontent" includes="**/*.*"/>   	
+    </copy>
+    
+     <copy  todir="${build.path}\agreement.war.dir\scriptlib">      
+   	       <fileset dir="${basedir}\config\birt_2_1_1\scriptlib" includes="**/*.*"/>   	
+    </copy>   	      
+    
+    <copy  todir="${build.path}\agreement.war.dir\WEB-INF">
+      <fileset dir="${basedir}\config\birt_2_1_1\tld\" includes="*.tld"/>
+    </copy>
+    
+     <copy  todir="${build.path}\agreement.war.dir\WEB-INF">
+      <fileset dir="${basedir}\config\birt_2_1_1\config\" includes="*.*"/>
+    </copy>
+                   
+     <copy  todir="${build.path}\agreement.war.dir\WEB-INF\classes">
+      <fileset dir="${basedir}\config" excludes="databaseconfig/,struts-config/,tld/,web.xml,birt_2_1_1/"/>
+    </copy>
+   	
+     <copy  todir="${build.path}\agreement.war.dir\WEB-INF\classes">
+        <fileset dir="${basedir}\config\databaseconfig" includes="*.*"/>
+     </copy>
+    
+     <copy  todir="${build.path}\agreement.war.dir\WEB-INF">
+      <fileset dir="${basedir}\config\struts-config\" includes="*.xml" />
+       <fileset dir="${basedir}\config\" includes="web.xml" />
+       <fileset dir="${basedir}\config\tld\" includes="*.tld" />
+    </copy>
+
+  </target>
+<!--
+	######### Compile #################################
+	Compiling the java sources
+	###################################################
+-->
+  <target name="compile" depends="init" description="To compile java sources">
+		<ant antfile="login-build.xml"/>
+		<javac srcdir="${basedir}\src\agreementsrc\com\dnb\agreement"
+			  destdir="${basedir}\build\agreementsrc\"           
+			  deprecation="${compile.deprecation}"
+			  optimize="${compile.optimize}" 
+			  source="1.5" target="1.5" debug="on" fork="yes" >
+			  <classpath refid="compile.classpath"/>
+		</javac>
+  </target>
+<!--
+	######### agreement ###############################
+	Compiling the java sources
+	###################################################
+-->
+   <target name="agreement"  depends="copy" description="Compile Java sources">
+	 <jar destfile="${build.path}\agreement.jar">
+  	     <fileset dir="${basedir}\build\agreementsrc\" excludes="**/*.java"/>
+  	 </jar>
+  	    
+  	<!-- Copy all jar files -->  	
+	<copy  todir="${build.path}/agreement.war.dir/WEB-INF/lib">
+	 	<fileset dir="${build.path}" includes="*.jar"/>  
+	   	<fileset dir="${basedir}/lib/jstl" includes="*.jar"/>
+	 	<fileset dir="${basedir}/lib/struts" includes="*.jar"/>
+		<fileset dir="${basedir}/lib/quartz" includes="*.jar" />
+	   	<fileset dir="${basedir}/lib/log4j" includes="*.jar"/>
+	    <fileset dir="${basedir}/lib/commons" includes="*.jar"/>
+	   	<fileset dir="${basedir}/lib/sunjce" includes="*.jar" /> 
+	 	<fileset dir="${basedir}/lib/servlet" includes="*.jar"/>
+		<fileset dir="${basedir}/lib/login" includes="*.jar"/>    	      	
+		<fileset dir="${basedir}/lib/birt_2_1_1" includes="*.jar"/>    	      	
+	</copy>         
+
+ 	<!-- making .war file -->
+	<jar destfile="${build.path}\${agreement.war.file}">
+		<fileset dir="${build.path}\agreement.war.dir" includes="**/*.*"/>
+	</jar>	
+    
+  </target>
+</project>
